@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-1 p-0"></div>
             <div class="col-10 p-0 card text-center shadow border rounded">
-            header
+                header
                 <app-header></app-header>
             </div>
             <div class="col-1 p-0"></div>
@@ -130,15 +130,8 @@ module.exports = {
     },
     components: VUEApp.loadComponents({
         LOAD    : {
-            'alertComp': '/vueApp/easydocker/alertComp.vue',
         }, 
         TPL :{
-            'auth'      : '/vueApp/easydocker/auth.vue',
-            'appBody'   : '/vueApp/easydocker/appBody.vue',
-            'popUpModal': '/vueApp/easydocker/popUpModals/_frame.vue',
-            'dataEngine': '/vueApp/easydocker/dataEngine.vue',
-            'spinner'   : '/vueApp/easydocker/spinner.vue',
-            'appHeader' : '/vueApp/easydocker/appHeader.vue'
         }
     })
 }
