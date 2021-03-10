@@ -4,7 +4,7 @@
             me = this,
 			dirPatt = /\/spa\-package\//;
 		me.call = function(p) {
-			let spaDir = env.appFolder + '/cloudApp/www/js/package/';
+			let spaDir = env.appFolder + '/www/js/package/';
 			let cfgFn = spaDir + p.replace(dirPatt, '');
 
 			let fileAttr = me.getConfigAttr(cfgFn);
