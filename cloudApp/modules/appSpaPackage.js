@@ -6,6 +6,8 @@
 		me.call = function(p) {
 			let spaDir = env.appFolder + '/www/js/package/';
 			let cfgFn = spaDir + p.replace(dirPatt, '');
+			res.send();
+			return true;
 			let fileAttr = me.getConfigAttr(cfgFn);
 
 			pkg.readJson(fileAttr.fileName, (cfg) => {
