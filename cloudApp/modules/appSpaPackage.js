@@ -6,10 +6,10 @@
 		me.call = function(p) {
 			let spaDir = env.appFolder + '/www/js/package/';
 			let cfgFn = spaDir + p.replace(dirPatt, '');
-			res.send(cfgFn);
-			return true;
-			let fileAttr = me.getConfigAttr(cfgFn);
 
+			let fileAttr = me.getConfigAttr(cfgFn);
+			res.send(fileAttr);
+			return true;
 			pkg.readJson(fileAttr.fileName, (cfg) => {
 				me.sendHeader(fileAttr.type);
 				if (fileAttr.type.indexOf(['vue']) !== -1) {
