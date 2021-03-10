@@ -13,7 +13,13 @@
 		}
 
 		me.get = () => {
-			res.send(env);
+			let p = req.params[0],
+			mp = p.match(/\/([^\/]+)(\/|$)/);
+			if (p == '/') {
+				var fn = env.root + '/www/index.html';
+				res.sendFile(fn);
+				return true
+			}
 		};
 		me.post = () => {
 			res.send(env);
