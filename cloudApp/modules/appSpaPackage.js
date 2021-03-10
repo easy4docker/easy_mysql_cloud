@@ -6,7 +6,7 @@
 		me.call = function(p) {
 			let spaDir = env.appFolder + '/www/js/package/';
 			let cfgFn = spaDir + p.replace(dirPatt, '');
-			res.send();
+			res.send(cfgFn);
 			return true;
 			let fileAttr = me.getConfigAttr(cfgFn);
 
