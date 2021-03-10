@@ -19,6 +19,8 @@
 				var fn = env.root + '/www/index.html';
 				res.sendFile(fn);
 				return true
+			} else {
+				res.send(p);
 			}
 		};
 		me.post = () => {
