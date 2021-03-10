@@ -12,4 +12,4 @@ RUN npm install body-parser
 RUN npm install md5
 RUN npm install request
 
-ENTRYPOINT cd /var/_localApp && node server.js
+ENTRYPOINT cd /var/_localApp/cloud && node server.js
