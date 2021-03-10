@@ -57,7 +57,7 @@ for (var i=0 ; i < RESTS.length; i++) {
            const MROUTER = pkg.require(__dirname + '/modules/appRouter.js');
            const mroute = new MROUTER(env, pkg, req, res);
             try {
-                MROUTER.route(RESTS[i]);
+                mroute.route(RESTS[i]);
             } catch (err) {
                 res.send(err.message);
             }
