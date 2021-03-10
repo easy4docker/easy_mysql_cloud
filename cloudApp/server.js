@@ -54,16 +54,13 @@ var RESTS = 'get|put|post|delete'.split('|');
 for (var i=0 ; i < RESTS.length; i++) {
     (function(i) {
         app[RESTS[i]](/(.+)$/i, (req, res) => {
-           // var APP = pkg.require(__dirname + '/modules/appRouter.js');
-           // var app = new APP(env, pkg, req, res);
-            res.send('env');
-          /*the 
+           const MROUTER = pkg.require(__dirname + '/modules/appRouter.js');
+           const mroute = new MROUTER(env, pkg, req, res);
             try {
-                app.route(RESTS[i]);
+                MROUTER.route(RESTS[i]);
             } catch (err) {
-                res.send(err.toString());
+                res.send(err.message);
             }
-            */
         });
     })(i)
 }
@@ -71,5 +68,5 @@ for (var i=0 ; i < RESTS.length; i++) {
 app.listen(port,  () => {
     var d = new Date(); // for now
     datetext = d.getHours()+":"+d.getMinutes()+":"+d.getSeconds();
-    console.log(datetext + ' Start Easy admin listening at http://localhost');
+    console.log(datetext + ' Start Easy mysql clopud listening at http://localhost');
 });
