@@ -3,13 +3,13 @@ FROM mysql/mysql-server:5.7
 RUN yum install -y oracle-nodejs-release-el7 oracle-release-el7
 RUN yum install nodejs -y
 
-#RUN npm install multer
-#RUN npm install morgan
-#RUN npm install debug
-#RUN npm install ect
-#RUN npm install express
-#RUN npm install body-parser
-#RUN npm install md5
-#RUN npm install request
+RUN npm install multer
+RUN npm install morgan
+RUN npm install debug
+RUN npm install ect
+RUN npm install express
+RUN npm install body-parser
+RUN npm install md5
+RUN npm install request
 
-#ENTRYPOINT cd /var/_localApp/cloud && node server.js
+ENTRYPOINT cd /var/_localApp/cloud && node server.js
