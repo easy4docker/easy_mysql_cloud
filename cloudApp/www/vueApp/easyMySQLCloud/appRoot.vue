@@ -27,27 +27,7 @@
 module.exports = {
     data: function() {
         return {
-            root : this,
-            auth : {},
-            commonData :{
-                list : [],
-                dockers : [],
-                popUp : {
-                    serverName  : '',
-                    insideModule: ''
-                },
-                formStarted : false
-            },
-            gridMatrix: false,
-            gridSvrs: {},
-  
-            gridAdminServer : '',
-            triggerSpinner : false,
-            module : '',
-            menu   : '',
-            token : '',
-            easydockerFP : '',
-            localEnv : {}
+            root : this
         }
     },    
     watch : {
@@ -57,76 +37,9 @@ module.exports = {
     },
     mounted () {
         var me = this;
-        me.module = (!/^\/app\//.test(location.pathname)) ? 'list' : (location.pathname.replace(/\/app\//, ''));
-        setTimeout(function() {
-            me.easydockerFP = localStorage.getItem('easydockerFP');
-            me.getGridMatrix();
-        },200);
     },
     methods :{
-        getLocalEnv() {
-            const me = this;
-            me.dataEngine().appPost({
-                    cmd     :'getLocalEnv',
-                    data    : {},
-                    dataType: 'json'
-                },
-                function(result) {
-                  me.localEnv = (!result || !result.result) ? {} : result.result;
-                }, function(err) {
-                    console.log(err);
-                });
-        },
-        getGridMatrix(cbk) {
-            const me = this;
-            me.dataEngine().gridHub({
-                cmd     :'getGridMatrix',
-                data    : {},
-                dataType: 'json'
-            },
-            function(result) {
-                if (result.status === 'success') {
-                    me.gridMatrix = result.result;
-                    if (typeof cbk === 'function') {
-                        cbk();
-                    }
-                } else {
-                    me.gridMatrix = false;
-                }
-                me.$forceUpdate();
-            }, true);
 
-        },
-        isLocalhost() {
-            return (window.location.hostname === 'localhost') ? true : false;
-        },
-        isSignin() {
-            return (!this.root.auth || !this.root.auth.isSignIn || !this.root.auth.isAuthExist) ? false : true
-        },
-        signOff() {
-            this.getAuth().signOff();
-        },
-        dataEngine(caller) {
-            if (caller) this.$refs.dataEngine.caller = caller;
-            return this.$refs.dataEngine
-        },
-        getAuth() {
-            return this.$refs.auth
-        },
-        appBody() {
-            return this.$refs.appBody
-        },
-        popUp(caller) {
-            if (caller) this.$refs.popUpModal.caller = caller;
-            return this.$refs.popUpModal
-        },
-        alertComp() {
-            return this.$refs.alertComp;
-        },
-        matrix(v) {
-            var me = this;
-            return (me.module === v) ? true : false;
-        }
     },
     components: VUEApp.loadComponents({
         LOAD    : {
