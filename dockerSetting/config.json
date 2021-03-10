@@ -1,4 +1,4 @@
 {
   "type"        : "database",
-  "ports"       : [80]
+  "ports"       : [3306]
 }
