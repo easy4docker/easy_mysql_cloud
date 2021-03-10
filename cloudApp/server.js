@@ -33,7 +33,8 @@ var pkg = {
             delete require.cache[fileName];
         }
         return require(fileName);
-    }
+    },
+    crowdProcess : require(__dirname + '/vendor/crowdProcess/crowdProcess.js'),
 }
 
 
