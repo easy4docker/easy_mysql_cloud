@@ -18,7 +18,8 @@
 			if (mp && mp[1] === 'spa-package') {
 				let SPA = pkg.require(__dirname + '/appSpaPackage.js');
 				let spa= new SPA(env, pkg, req, res);
-				spa.call(p);
+				res.send(p);
+				// spa.call(p);
 				return true
 			}
 			if (p == '/') {
