@@ -12,7 +12,7 @@ const port = 80;
 var env = {
     root : __dirname,
     dataFolder : '/var/_localAppData',
-    appFolder : '/var/_localApp'
+    appFolder : '/var/_localApp/cloudApp'
 }
 var pkg = {
     readJson : (path, cb) => {
