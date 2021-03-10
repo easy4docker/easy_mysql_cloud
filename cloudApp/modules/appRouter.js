@@ -20,7 +20,7 @@
 				res.sendFile(fn);
 				return true
 			} else {
-				res.send(p);
+				res.send('p');
 			}
 		};
 		me.post = () => {
