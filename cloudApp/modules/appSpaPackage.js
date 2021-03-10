@@ -8,8 +8,7 @@
 			let cfgFn = spaDir + p.replace(dirPatt, '');
 
 			let fileAttr = me.getConfigAttr(cfgFn);
-			res.send(fileAttr);
-			return true;
+	
 			pkg.readJson(fileAttr.fileName, (cfg) => {
 				me.sendHeader(fileAttr.type);
 				if (fileAttr.type.indexOf(['vue']) !== -1) {
