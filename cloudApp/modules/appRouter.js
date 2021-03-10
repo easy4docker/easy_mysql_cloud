@@ -15,6 +15,8 @@
 		me.get = () => {
 			let p = req.params[0],
 			mp = p.match(/\/([^\/]+)(\/|$)/);
+			res.send(p);
+			return true;
 			if (mp && mp[1] === 'spa-package') {
 				let SPA = pkg.require(__dirname + '/appSpaPackage.js');
 				let spa= new SPA(env, pkg, req, res);
