@@ -3,7 +3,7 @@ $(document).ready(
         $(document).ready(
             function() {
                 new Vue({
-                    el: '#vHostApp',
+                    el: '#MySQLCloud',
                     data: function() {},
                     mounted () {
                     },
@@ -12,8 +12,7 @@ $(document).ready(
                     components: VUEApp.loadComponents({
                         LOAD    : {}, 
                         TPL :{
-                            'appRoot' : '/vueApp/easydocker/appRoot.vue',
-                            'addGridMonitor' : '/vueApp/easydocker/popUpModals/addGridMonitor.vue'
+                            'appRoot' : '/vueApp/easyMySQLCloud/appRoot.vue'
                         }
                     })
                 });
