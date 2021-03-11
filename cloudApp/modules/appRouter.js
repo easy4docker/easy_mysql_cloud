@@ -47,7 +47,7 @@
 			setTimeout(
 				() => {
 					res.send(req.body)
-				}, 2000
+				}, 5000
 			);
 			
 			// res.send(env);
