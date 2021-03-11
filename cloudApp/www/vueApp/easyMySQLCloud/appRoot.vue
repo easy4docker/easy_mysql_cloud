@@ -3,9 +3,7 @@
         <div class="row">
             <div class="col-1 p-0"></div>
             <div class="col-10 p-0 card text-center shadow border rounded">
-                header
                 <app-header></app-header>
-                header2
             </div>
             <div class="col-1 p-0"></div>
         </div>
