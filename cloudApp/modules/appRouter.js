@@ -44,7 +44,8 @@
 			}
 		};
 		me.post = () => {
-			res.send(env);
+			res.send(req.body)
+			// res.send(env);
 		};
 
 		me.sendFile = (fn) => {
