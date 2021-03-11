@@ -5,7 +5,8 @@
         "/vueApp/easyMySQLCloud/dataEngine.vue",
         "/vueApp/easyMySQLCloud/popUpModals/_frame.vue",
         "/vueApp/easyMySQLCloud/appRoot.vue",
-        "/vueApp/easyMySQLCloud/auth.vue"
+        "/vueApp/easyMySQLCloud/auth.vue",
+        "/vueApp/easyMySQLCloud/spinner.vue"
     ],
     "JS" : [
         "/js/coffee-script.js",
