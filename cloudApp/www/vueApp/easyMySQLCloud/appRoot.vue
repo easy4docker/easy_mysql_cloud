@@ -26,7 +26,8 @@
 module.exports = {
     data: function() {
         return {
-            root : this
+            root : this,
+            triggerSpinner : false
         }
     },    
     watch : {
