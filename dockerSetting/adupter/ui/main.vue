@@ -1,6 +1,6 @@
 <template>
-    <span>oop
-        <div class="adupterBody border border-info br-3 m-1 p-3 rounded-lg alert-info"> qqq
+    <span>
+        <div class="adupterBody border border-info br-3 m-1 p-0 rounded-lg alert-info">
             <user-form v-if="!isUserAdded()"></user-form>
             <span v-if="isUserAdded()">App User ready!
                 <a class="btn btn-sm btn-warning m-1"  href="JavaScript:void(0)" v-on:click="removeAppUser()">Remove App User</a>
@@ -23,7 +23,9 @@ module.exports = {
     mounted () {
         let me = this;
         let url = me.plugin_path + '/api/main.js';
-        me.getAllUsers();
+        // alert(url);
+       // return true;
+       // me.getAllUsers();
         VUEApp.dynamicLoadComponent({userForm : me.plugin_path + '/ui/userForm.vue'}, me);
         me.$forceUpdate();
     },

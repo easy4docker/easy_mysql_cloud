@@ -1,6 +1,6 @@
 <template>
-    <!--class="adupterBody border border-info br-3 m-1 p-3 rounded-lg alert-info"-->
-    <div class="container m-0 mt-2 text-left border border-info alert-info">
+    <!--class="adupterBody border border-secondary br-3 m-1 p-3 rounded-lg alert-info"-->
+    <div class="container m-0 text-left border border-secondary alert-secondary">
       <form>
           <div class="row">
             <div class="col-6 p-1 pl-3 m-0 text-left">
@@ -11,19 +11,19 @@
             </div>           
         </div>
         <div class="row">
-            <div class="col-5 p-1 pl-3 m-0 text-left">
+            <div class="col-4 p-1 pl-3 m-0 text-left">
               <div class="form-group">
                 <label>password</label>
                 <input type="password" class="form-control" maxlength="64" v-on:keyup="textWarning()" v-model="form.password" placeholder="Password">
               </div>
             </div>
-            <div class="col-5 p-1 pl-3 m-0 text-left">
+            <div class="col-4 p-1 pl-3 m-0 text-left">
               <div class="form-group">
                 <label>Verify password</label>
                 <input type="password" class="form-control" maxlength="64" v-on:keyup="textWarning()" v-model="form.vpassword" placeholder="Verify password">
               </div>
             </div>
-            <div class="col-2 p-1 pl-3 m-0 text-right">
+            <div class="col-4 p-1 pl-3 m-0 text-right">
               <label>&nbsp;</label>
               <a class="form-control btn btn-sm btn-success" href="JavaScript:void(0)" v-on:click="submitAddUser()">Add User</a>
             </div>            
