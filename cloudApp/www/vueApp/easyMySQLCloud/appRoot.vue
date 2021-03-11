@@ -39,7 +39,7 @@ module.exports = {
         
         setTimeout(function() {
             me.easydockerFP = localStorage.getItem('easydockerFP');
-            me.getGridMatrix();
+            me.getLocalEnv() 
         },200);
         // me.getLocalEnv() 
     },
