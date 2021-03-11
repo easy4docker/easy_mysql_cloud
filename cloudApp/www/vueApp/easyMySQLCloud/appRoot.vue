@@ -50,6 +50,7 @@ module.exports = {
                     dataType: 'json'
                 },
                 function(result) {
+                    me.step = result.step;
                   console.log(result);
                 }, true);
         },
