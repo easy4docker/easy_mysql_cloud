@@ -10,10 +10,6 @@
                             <span class="version">(Version &alpha;)</span></h1>
                     </div>
                     <div class="col-2 p-0 m-0 text-right text-warning">
-                            <a class="btn btn-danger border border-warning pull-right" 
-                                href="JavaScript:void(0)">
-                            <i class="fa fa-power-off" aria-hidden="true"></i> Restart Server
-                        </a>
                     </div>
                 </div>
             </div>
