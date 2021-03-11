@@ -4,7 +4,7 @@
             <div class="container-fluid m-0 head-menu-1">
                 <div class="row">
                     <div class="col-12 p-3 m-0 text-center text-danger">
-                    <i class="fa fa-bell" aria-hidden="true"></i> The initial password has not been stetup yet.  Please go to EasyDocker Admin link with auth token.  
+                    <i class="fa fa-bell" aria-hidden="true"></i> The initial password has not been setup yet.  Please go to EasyDocker Admin link with auth token.  
                     <br/><br/>
                     <img class="m-3" src="/images/example-non-auth-page.png" width="90%">
                     </div>
