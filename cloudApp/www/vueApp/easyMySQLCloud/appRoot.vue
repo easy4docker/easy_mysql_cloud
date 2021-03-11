@@ -45,6 +45,7 @@ module.exports = {
         LOAD    : {
         }, 
         TPL :{
+            'appHeader' : '/vueApp/easyMySQLCloud/appHeader.vue'
         }
     })
 }
