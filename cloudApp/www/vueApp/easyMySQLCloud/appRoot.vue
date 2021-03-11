@@ -11,7 +11,7 @@
             <div class="col-1 p-0"></div>
             <div class="col-10 p-0 card text-center shadow border rounded">
                 <app-body ref="appBody"  v-if="step === 1">></app-body>
-                <auth ref="auth" v-if="step !== 1"></auth>
+                <init-root-password v-if="step === 'initRootPassword'"></init-root-password>
             </div>
             <div class="col-1 p-0"></div>
         </div>
@@ -51,7 +51,7 @@ module.exports = {
                 },
                 function(result) {
                     me.step = result.step;
-                  console.log(result);
+                    console.log(result);
                 }, true);
         },
         dataEngine(caller) {
@@ -61,13 +61,14 @@ module.exports = {
     },
     components: VUEApp.loadComponents({
         LOAD    : {
+            initRootPassword : '/vueApp/easyMySQLCloud/auth/initRootPassword.vue',
+            authSignin       : '/vueApp/easyMySQLCloud/auth/signin.vue'
         }, 
         TPL :{
             'appHeader' : '/vueApp/easyMySQLCloud/appHeader.vue',
             'dataEngine' : '/vueApp/easyMySQLCloud/dataEngine.vue',
             'spinner'   : '/vueApp/easyMySQLCloud/spinner.vue',
             'popUpModal': '/vueApp/easyMySQLCloud/popUpModals/_frame.vue',
-            'auth'      : '/vueApp/easyMySQLCloud/auth.vue',
             'appBody'   : '/vueApp/easyMySQLCloud/appBody.vue'
         }
     })
