@@ -36,12 +36,12 @@ module.exports = {
     },
     mounted () {
         var me = this;
-        /*
+        
         setTimeout(function() {
             me.easydockerFP = localStorage.getItem('easydockerFP');
             me.getGridMatrix();
-        },200);*/
-        me.getLocalEnv() 
+        },200);
+        // me.getLocalEnv() 
     },
     methods :{
         getLocalEnv() {
