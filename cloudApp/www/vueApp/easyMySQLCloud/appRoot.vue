@@ -78,5 +78,5 @@ module.exports = {
 </script>
  
 <style>
-.grid-section { min-height : 32rem }
+.body-card { min-height : 32rem }
 </style>
