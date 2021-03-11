@@ -1,12 +1,12 @@
 <template>
-    <span>
-        <!--div class="adupterBody border border-info br-3 m-1 p-3 rounded-lg alert-info"--> 
+    <span>oop
+        <div class="adupterBody border border-info br-3 m-1 p-3 rounded-lg alert-info"> qqq
             <user-form v-if="!isUserAdded()"></user-form>
             <span v-if="isUserAdded()">App User ready!
                 <a class="btn btn-sm btn-warning m-1"  href="JavaScript:void(0)" v-on:click="removeAppUser()">Remove App User</a>
             </span>
-        <!--/div-->
-        {{/*appUserList*/}}
+        </div>
+        {{appUserList}}
     </span>    
 </template>
  
