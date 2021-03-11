@@ -10,8 +10,8 @@
         <div class="row">
             <div class="col-1 p-0"></div>
             <div class="col-10 p-0 card text-center shadow border rounded">
-                <app-body ref="appBody"></app-body>
-                <auth ref="auth"></auth>
+                <app-body ref="appBody"  v-if="step === 1">></app-body>
+                <auth ref="auth" v-if="step !== 1"></auth>
             </div>
             <div class="col-1 p-0"></div>
         </div>
@@ -27,7 +27,8 @@ module.exports = {
     data: function() {
         return {
             root : this,
-            triggerSpinner : true
+            triggerSpinner : true,
+            step : 1
         }
     },    
     watch : {
@@ -37,12 +38,11 @@ module.exports = {
         
         setTimeout(function() {
             me.easydockerFP = localStorage.getItem('easydockerFP');
-            me.getLocalEnv() 
+            me.getAuthStatus();
         },200);
-        // me.getLocalEnv() 
     },
     methods :{
-        getLocalEnv() {
+        getAuthStatus() {
             const me = this;
             me.dataEngine().appPost({
                     cmd     :'auth',

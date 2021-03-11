@@ -44,13 +44,13 @@
 			}
 		};
 		me.post = () => {
-			setTimeout(
-				() => {
-					res.send(env)
-				}, 2000
-			);
-			
-			// res.send(env);
+			switch(req.body.cmd) {
+				case 'auth':
+					res.send({status:'success', step: 0});
+					bresk;
+				default :
+					res.send(env);
+			}
 		};
 
 		me.sendFile = (fn) => {
