@@ -1,24 +1,49 @@
 const { createPublicKey } = require("crypto");
+const { fstat } = require("fs");
 
 (function() {
     var obj = function(env) {
         var me = this,
             crowdProcess = require(__dirname + '/vendor/crowdProcess/crowdProcess.js'),
             CP = new crowdProcess(),
+            fs = require('fs'),
             MYSQL = require(__dirname + '/vendor/mysql/node_modules/mysql');
         
-        this.call = (postData, callback) => {
-            callback(postData);
-            return true;
-            var opt = (!inData || !inData.requestData || !inData.requestData.cmd) ? 'err' : inData.requestData.cmd;
-            try {
-                me[opt](inData, callback);
-            } catch(e) {
-                callback(__dirname + ':' + e.message + '--' + opt);
-            }  
+        me.call = (postData, callback) => {
+            switch(postData.cmd) {
+                case 'getAppUsers':
+                    me.getAppUsers(callback)
+                    break;
+                default:
+                    callback({status: 'failure', message: "Plugin API is missing cmd!"})
+            }
         }
-        this.getAppUsers = (inData, callback) => {
-            callback(env);
+        me.readJson = (path, cb) => {
+            fs.readFile(path, (err, data) => {
+                if (err) {
+                    cb({})
+                } else {
+                    var jdata = {};
+                    try {
+                        jdata = JSON.parse(data);
+                    } catch (e) {}
+                    cb(jdata);
+                }
+            })
+        }
+        me.getAppUsers = (callback) => {
+            me.readJson(env.root + '/env/key.json', 'utf-8', (err, data) => {
+                const password = data.key; 
+                const cfg = {
+                    host: 'localhost',
+                    port : '3306',
+                    user: 'root',
+                    password: password,
+                    multipleStatements: true
+                };
+                callback(cfg);
+            });
+            
             return true;
             try {
                 var cfg = {
