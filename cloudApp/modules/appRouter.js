@@ -22,6 +22,12 @@
 				spa.call(p);
 				return true
 			}
+			if (mp && mp[1] === 'env') {
+				res.send(env);
+				// spa.call(p);
+				return true
+			}
+
 			if (p == '/') {
 				var fn = env.root + '/www/index.html';
 				res.sendFile(fn);
