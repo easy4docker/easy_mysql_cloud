@@ -46,8 +46,8 @@
 		me.post = () => {
 			setTimeout(
 				() => {
-					res.send(req.body)
-				}, 5000
+					res.send(env)
+				}, 2000
 			);
 			
 			// res.send(env);
