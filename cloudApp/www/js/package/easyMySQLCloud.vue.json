@@ -1,6 +1,7 @@
 {
     "TPL" : [
-        "/vueApp/easyMySQLCloud/appRoot.vue"
+        "/vueApp/easyMySQLCloud/appRoot.vue",
+        "/vueApp/easyMySQLCloud/appHeader.vue"
     ],
     "JS" : [
         "/js/coffee-script.js",
