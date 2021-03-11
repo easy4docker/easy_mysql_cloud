@@ -29,15 +29,8 @@
 			}
 
 			if (p == '/') {
-				if (!req.query.token) {
-					// res.cookie('token', req.query.token, {maxAge: 360000});
-					// res.redirect('/');
-					var fn = env.root + '/www/unauth.html';
-					res.sendFile(fn);
-				} else {
-					var fn = env.root + '/www/index.html';
-					res.sendFile(fn);
-				}
+				var fn = env.root + '/www/index.html';
+				res.sendFile(fn);
 				return true
 			} else {
 				var fn = env.root + '/www' + p;
@@ -53,7 +46,11 @@
 		me.post = () => {
 			switch(req.body.cmd) {
 				case 'auth':
-					res.send({status:'success', step: 'nonAuthPage'});
+					let AUTH = pkg.require(__dirname + '/auth.js');
+					let auth= new AUTH(env, pkg, req, res);
+					auth.call((result) => {
+						res.send(result);
+					});
 					bresk;
 				default :
 					res.send(env);

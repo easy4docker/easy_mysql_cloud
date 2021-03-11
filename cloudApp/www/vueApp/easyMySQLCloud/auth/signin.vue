@@ -4,7 +4,7 @@
             <div class="container-fluid m-0 head-menu-1">
                 <div class="row">
                     <div class="col-12 p-2 m-0 text-left">
-                    Auth Section
+                    Auth Section--
                     </div>
                 </div>
             </div>
