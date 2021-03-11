@@ -29,8 +29,13 @@
 			}
 
 			if (p == '/') {
-				var fn = env.root + '/www/index.html';
-				res.sendFile(fn);
+				if (req.query.token) {
+					res.cookie('token', req.query.token, {maxAge: 360000});
+					res.redirect('/');
+				} else {
+					var fn = env.root + '/www/index.html';
+					res.sendFile(fn);
+				}
 				return true
 			} else {
 				var fn = env.root + '/www' + p;
