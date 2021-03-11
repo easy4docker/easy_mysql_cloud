@@ -27,13 +27,10 @@ module.exports = {
     data: function() {
         return {
             root : this,
-            triggerSpinner : false
+            triggerSpinner : true
         }
     },    
     watch : {
-        module :  function (newValue, oldValue) {
-            history.pushState('', '', '/app/' + newValue);
-        } 
     },
     mounted () {
         var me = this;
