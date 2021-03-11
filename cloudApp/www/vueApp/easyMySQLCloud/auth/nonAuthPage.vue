@@ -5,7 +5,7 @@
                 <div class="row">
                     <div class="col-12 p-3 m-0 text-center text-danger">
                     <i class="fa fa-bell" aria-hidden="true"></i> The initial password has not been setup yet.  Please go to EasyDocker Admin link with auth token.  
-                    <img class="m-3" src="/images/example-non-auth-page.png" width="80%">
+                    <img class="m-3 border rounded border-info" src="/images/example-non-auth-page.png" width="80%">
                     </div>
                 </div>
             </div>
