@@ -19,17 +19,6 @@
                 </div>
             </div>
             <div class="container-fluid mt-1 head-menu-2">
-                <div class="row" v-if="root.isSignin()">
-                    <div class="col-12 p-0 m-0 text-center">
-                        <div class="pull-left border border-light rounded menu-frame shadow-sm">
-
-                        </div>
-
-                        <div class="m-0 text-center border border-light rounded menu-frame shadow-sm pull-right">
- 
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div> 
