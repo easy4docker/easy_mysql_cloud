@@ -44,7 +44,12 @@ module.exports = {
         LOAD    : {
         }, 
         TPL :{
-            'appHeader' : '/vueApp/easyMySQLCloud/appHeader.vue'
+            'appHeader' : '/vueApp/easyMySQLCloud/appHeader.vue',
+            'dataEngine' : '/vueApp/easyMySQLCloud/dataEngine.vue',
+            'spinner'   : '/vueApp/easyMySQLCloud/spinner.vue',
+            'popUpModal': '/vueApp/easyMySQLCloud/popUpModals/_frame.vue',
+            'auth'      : '/vueApp/easyMySQLCloud/auth.vue',
+            'appBody'   : '/vueApp/easyMySQLCloud/appBody.vue'
         }
     })
 }
