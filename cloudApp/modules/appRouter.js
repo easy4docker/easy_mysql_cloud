@@ -44,7 +44,12 @@
 			}
 		};
 		me.post = () => {
-			res.send(req.body)
+			setTimeout(
+				() => {
+					res.send(req.body)
+				}, 2000
+			);
+			
 			// res.send(env);
 		};
 
