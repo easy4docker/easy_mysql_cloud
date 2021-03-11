@@ -54,9 +54,7 @@ module.exports = {
                 },
                 function(result) {
                   console.log(result);
-                }, function(err) {
-                    console.log(err);
-                });
+                }, true);
         },
         dataEngine(caller) {
             if (caller) this.$refs.dataEngine.caller = caller;
