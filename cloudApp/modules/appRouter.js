@@ -46,7 +46,7 @@
 		me.post = () => {
 			switch(req.body.cmd) {
 				case 'auth':
-					res.send({status:'success', step: 'initRootPassword'});
+					res.send({status:'success', step: 'nonAuthPage'});
 					bresk;
 				default :
 					res.send(env);
