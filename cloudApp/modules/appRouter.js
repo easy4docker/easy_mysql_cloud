@@ -32,7 +32,7 @@
 				if (!req.query.token) {
 					// res.cookie('token', req.query.token, {maxAge: 360000});
 					// res.redirect('/');
-					var fn = env.root + '/www/index.html';
+					var fn = env.root + '/www/unauth.html';
 					res.sendFile(fn);
 				} else {
 					var fn = env.root + '/www/index.html';
