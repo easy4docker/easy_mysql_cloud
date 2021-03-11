@@ -1,11 +1,15 @@
+const { createPublicKey } = require("crypto");
+
 (function() {
-    var obj = function() {
+    var obj = function(env) {
         var me = this,
             crowdProcess = require(__dirname + '/vendor/crowdProcess/crowdProcess.js'),
             CP = new crowdProcess(),
             MYSQL = require(__dirname + '/vendor/mysql/node_modules/mysql');
         
-        this.call = (inData, callback) => {
+        this.call = (postData, callback) => {
+            callback(postData);
+            return true;
             var opt = (!inData || !inData.requestData || !inData.requestData.cmd) ? 'err' : inData.requestData.cmd;
             try {
                 me[opt](inData, callback);
@@ -14,20 +18,26 @@
             }  
         }
         this.getAppUsers = (inData, callback) => {
+            callback(env);
+            return true;
             try {
                 var cfg = {
                     host: inData.dockerEnv.main_ip,
                     port : parseInt(inData.dockerEnv.siteConfig.unidx * 10000) + parseInt(inData.dockerEnv.siteConfig.docker.ports[0]),
                     user: 'root',
-                    password: inData.dockerEnv.rootKey.key,
+                    password: 'inData.dockerEnv.rootKey.key',
                     multipleStatements: true
                 };
+                callback(__dirname);
+                return false;
+                /*
+                createPublicKey(cfg); return true;
                 var connection = MYSQL.createConnection(cfg);
                 var sql_str = 'USE `mysql`; SELECT `Host`, `User` FROM `user` WHERE `User` like "appUser%";'
                 connection.query(sql_str, function (error, results, fields) {
                     connection.end();
                     callback((error) ? error : results[1]);
-                });
+                });*/
             } catch(e) {
                 callback(__dirname + ':' + e.message);
             }

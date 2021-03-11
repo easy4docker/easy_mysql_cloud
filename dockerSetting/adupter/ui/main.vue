@@ -25,7 +25,7 @@ module.exports = {
         let url = me.plugin_path + '/api/main.js';
         // alert(url);
        // return true;
-       // me.getAllUsers();
+        me.getAllUsers();
         VUEApp.dynamicLoadComponent({userForm : me.plugin_path + '/ui/userForm.vue'}, me);
         me.$forceUpdate();
     },
