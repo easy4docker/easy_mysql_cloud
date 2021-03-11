@@ -36,9 +36,31 @@ module.exports = {
     },
     mounted () {
         var me = this;
+        /*
+        setTimeout(function() {
+            me.easydockerFP = localStorage.getItem('easydockerFP');
+            me.getGridMatrix();
+        },200);*/
+        me.getLocalEnv() 
     },
     methods :{
-
+        getLocalEnv() {
+            const me = this;
+            me.dataEngine().appPost({
+                    cmd     :'auth',
+                    data    : {},
+                    dataType: 'json'
+                },
+                function(result) {
+                  console.log(result);
+                }, function(err) {
+                    console.log(err);
+                });
+        },
+        dataEngine(caller) {
+            if (caller) this.$refs.dataEngine.caller = caller;
+            return this.$refs.dataEngine
+        }
     },
     components: VUEApp.loadComponents({
         LOAD    : {
