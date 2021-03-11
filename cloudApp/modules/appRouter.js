@@ -27,7 +27,14 @@
 				res.sendFile(fn);
 				return true
 			} else {
-				res.send('p');
+				var fn = env.root + '/www' + p;
+				fs.stat(fn, function(err, stat) {
+					if(err == null) {
+						res.sendFile(fn);
+					} else  {
+						res.send({status:'failure', message:'page does not exist!'});
+					}
+				});
 			}
 		};
 		me.post = () => {
