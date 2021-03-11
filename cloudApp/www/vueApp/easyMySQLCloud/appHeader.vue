@@ -6,7 +6,7 @@
                     <div class="col-2 p-0 m-0 text-left">
                     </div>
                     <div class="col-8 p-3 text-center">
-                        <h1 class="header-title m-3">EasyDocker Admin 
+                        <h1 class="header-title m-3">Easy MySQL Cloud 
                             <span class="version">(Version &alpha;)</span></h1>
                     </div>
                     <div class="col-2 p-0 m-0 text-right text-warning">
