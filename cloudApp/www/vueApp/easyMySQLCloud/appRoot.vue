@@ -62,9 +62,9 @@ module.exports = {
     },
     components: VUEApp.loadComponents({
         LOAD    : {
-            initRootPassword : '/vueApp/easyMySQLCloud/auth/initRootPassword.vue',
-            irregularRequest : '/vueApp/easyMySQLCloud/auth/irregularRequest.vue',
-            authSignin       : '/vueApp/easyMySQLCloud/auth/signin.vue'
+            initRootPassword    : '/vueApp/easyMySQLCloud/auth/initRootPassword.vue',
+            nonAuthPage         : '/vueApp/easyMySQLCloud/auth/nonAuthPage.vue',
+            authSignin          : '/vueApp/easyMySQLCloud/auth/signin.vue'
         }, 
         TPL :{
             'appHeader' : '/vueApp/easyMySQLCloud/appHeader.vue',
