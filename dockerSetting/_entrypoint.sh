@@ -1,2 +1,2 @@
 mysqld
-cd /var/_localApp/cloudApp && node server.js
+# cd /var/_localApp/cloudApp && node server.js
