@@ -19,8 +19,8 @@
                 <b class="m-3" v-if="root.module === 'tokens'">Access Token</b> |
                 <a href="JavaScript:void(0)" v-if="root.module !== 'sql'"  v-on:click="module('sql')" class="m-3">SQL Tool</a>
                 <b class="m-3" v-if="root.module === 'sql'">SQL Tool</b> |
-                <a href="JavaScript:void(0)" v-if="root.module !== 'ducuments'"  v-on:click="module('documents')" class="m-3">Documents</a>
-                <b class="m-3" v-if="root.module === 'ducuments'">Documents</b> |
+                <a href="JavaScript:void(0)" v-if="root.module !== 'documents'"  v-on:click="module('documents')" class="m-3">Documents</a>
+                <b class="m-3" v-if="root.module === 'documents'">Documents</b>
             </div>
         </div>
     </div> 
