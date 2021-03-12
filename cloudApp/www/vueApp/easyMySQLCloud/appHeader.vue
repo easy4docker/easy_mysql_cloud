@@ -1,6 +1,6 @@
 <template>
     <div class="head-card card m-1">
-        <div class="card-body m-0 p-1 header-bg alert-info">
+        <div class="card-body m-0 p-1 alert-info">
             <div class="container-fluid m-0 head-menu-1">
                 <div class="row">
                     <div class="col-2 p-0 m-0 text-left">
@@ -55,28 +55,9 @@ module.exports = {
 .head-menu-2 .menu-frame {
     background: rgba(0,0,0,0.33);
 }
-.header-bg { 
-    
-    /*
-    background: linear-gradient(rgba(255,255,255,0), rgba(255,255,255,0.5)),  url("/images/header-bg.png"); 
-    background-repeat: no-repeat, repeat;
-    background-size: cover;
-    background-position: center;
-    */
-}
 
 .header-title {
     font-family: "RocknRoll One", Arial, Verdana, Serif;
-    /*
-   -webkit-text-stroke: 1px black;
-   color: white;
-   text-shadow:
-       3px 3px 0 #000,
-     -1px -1px 0 #000,  
-      1px -1px 0 #000,
-      -1px 1px 0 #000,
-       1px 1px 0 #000;
-       */
 }
 .header-title .version {
     font-family: Arial, Verdana, Serif;
