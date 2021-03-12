@@ -1,11 +1,10 @@
 #!/bin/bash
 
-echo 666 >> /tmp/rr.txt
+
 crond
-
-echo "* * * * * root (echo _EASY_MIN_CRON && echo 8888  >> /tmp/minCron.txt)" >> /etc/crontab
-
-echo 7777 >> /tmp/rr.txt
+echo "* * * * * root (echo _EASY_MIN_CRON && echo 'nodejs server related script'  >> /tmp/minCron.txt)" >> /etc/crontab
+sh /var/_entrypoint.sh
+# --- nodejs server related script --- end --
 
 # Copyright (c) 2017, Oracle and/or its affiliates. All rights reserved.
 #
