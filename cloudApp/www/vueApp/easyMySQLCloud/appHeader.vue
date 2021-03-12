@@ -15,9 +15,9 @@
                 </div>
             </div>
             <div class="container-fluid mt-1 head-menu-2 text-left">
-                <a href="JavaScript:void(0)" class="m-3">Access Token</a> |
-                <a href="JavaScript:void(0)" class="m-3">SQL Tool</a> |
-                <a href="JavaScript:void(0)" class="m-3">Documents</a>
+                <a href="JavaScript:void(0)" v-on:click="module('token')" class="m-3">Access Token</a> |
+                <a href="JavaScript:void(0)" v-on:click="module('sql')" class="m-3">SQL Tool</a> |
+                <a href="JavaScript:void(0)" v-on:click="module('documents')" class="m-3">Documents</a>
             </div>
         </div>
     </div> 
@@ -27,8 +27,7 @@
 module.exports = {
     data: function() {
         return {
-            root :  this.$parent.root,
-            module : ''
+            root :  this.$parent.root
         }
     },
     mounted() {
@@ -37,6 +36,9 @@ module.exports = {
 
     },
     methods :{
+        module (v) {
+            this.root.module = v;
+        }
     }
 }
 </script>
