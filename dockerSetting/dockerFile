@@ -22,6 +22,6 @@ COPY _entrypointSample.sh /entrypointSample.sh
 
 # CMD ["mysqld"]
 # ENTRYPOINT mysqld
-# ENTRYPOINT sh /var/_entrypoint.sh
+ENTRYPOINT sh /var/_entrypoint.sh
 # ENTRYPOINT ["mysqld"]
 # CMD ["echo", "222"]
