@@ -15,10 +15,7 @@ module.exports = {
     },
     methods :{
         withAuth(data) {
-            let v = localStorage.getItem('easydockerFP');
-            if (v) {
-                data.authToken = v;
-            }
+            data.token = income_token;
             return data;
         },
         appPost(data, callback, isSpinner) {
@@ -26,7 +23,7 @@ module.exports = {
             if (isSpinner) me.$parent.triggerSpinner = true;
             $.ajax({
                 type: 'POST',
-                url: '/',
+                url: '/api',
                 data: me.withAuth(data),
                 success: function(result) {
                     if (isSpinner) me.$parent.triggerSpinner = false;

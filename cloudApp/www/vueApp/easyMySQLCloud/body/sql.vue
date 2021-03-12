@@ -31,6 +31,9 @@ module.exports = {
 
     },
     methods :{
+        queryDatabases() {
+            
+        }
     }
 }
 </script>
