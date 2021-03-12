@@ -2,20 +2,23 @@
 	var obj =  function (env, pkg, req, res) {
         var fs = require('fs'),
             me = this;
-		me.call = function(cbk) {
+		me.page = function(cbk) {
 			pkg.readJson(env.appEnv + '/token.json', (tokenRec) => {
 				if (tokenRec && tokenRec.initToken === req.body.token && req.body.token) {
-					me.sendAuthPage();
+					res.render(env.root  + '/views/index.ect', req.body)
 				} else {
-					me.sendUnAuthPage();
+					res.render(env.root  + '/views/unAuth.ect', req.body);
 				}
 			});
 		};
-		me.sendAuthPage = () => {
-			res.render(env.root  + '/views/index.ect', req.body);
-		};
-		me.sendUnAuthPage = () => {
-			res.render(env.root  + '/views/unAuth.ect', req.body);
+		me.api = (cbk) => {
+			pkg.readJson(env.appEnv + '/token.json', (tokenRec) => {
+				if (tokenRec && tokenRec.initToken === req.body.token && req.body.token) {
+					cbk(true);
+				} else {
+					cbk(false);
+				}
+			});
 		};
 	};
 	if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {

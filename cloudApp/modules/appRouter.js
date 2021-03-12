@@ -30,10 +30,9 @@
 			}
 
 			if (p == '/' || p == '/index.html') {
-				res.send({status:'failure', message:'unAuthorized access!'});
-				// var fn = env.root + '/www/index.html';
-				// res.sendFile(fn);
-				// return true
+				let AUTH = pkg.require(__dirname + '/auth.js');
+				let auth= new AUTH(env, pkg, req, res);
+				auth.page();
 			} else {
 				var fn = env.root + '/www' + p;
 				fs.stat(fn, function(err, stat) {
@@ -50,7 +49,7 @@
 				case 'postPageAuth':
 					let AUTH = pkg.require(__dirname + '/auth.js');
 					let auth= new AUTH(env, pkg, req, res);
-					auth.call();
+					auth.page();
 					break;
 				case 'api':
 					res.send({env: env, data:req.body});
