@@ -3,8 +3,7 @@
 		var me = this;
 		var fs = require('fs');
 		var path = require('path');
-		let AUTH = pkg.require(__dirname + '/auth.js');
-		let auth= new AUTH(env, pkg, req, res);
+
 		me.route = (rest) => {
 			if (rest === 'get') {
 				me.get();
@@ -15,6 +14,9 @@
 		me.get = () => {
 			let p = req.params[0],
 			mp = p.match(/\/([^\/]+)(\/|$)/);
+
+			let AUTH = pkg.require(__dirname + '/auth.js');
+			let auth= new AUTH(env, pkg, req, res);
 
 			if (mp && mp[1] === 'spa-package') {
 				let SPA = pkg.require(__dirname + '/appSpaPackage.js');
@@ -43,6 +45,8 @@
 			}
 		};
 		me.post = () => {
+			let AUTH = pkg.require(__dirname + '/auth.js');
+			let auth= new AUTH(env, pkg, req, res);
 			switch(req.body.cmd) {
 				case 'postPageAuth':
 					auth.page();
