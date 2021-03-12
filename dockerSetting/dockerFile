@@ -18,4 +18,4 @@ COPY _entrypoint.sh /var/_entrypoint.sh
 # ENTRYPOINT mysqld
 # ENTRYPOINT sh /var/_entrypoint.sh
 # ENTRYPOINT ["mysqld"]
-CMD ["sh", "/var/_entrypoint.sh"]
+CMD ["echo", "222"]
