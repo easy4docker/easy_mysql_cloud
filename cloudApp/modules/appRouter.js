@@ -65,7 +65,7 @@
 									multipleStatements: true
 								};
 								var connection = MYSQL.createConnection(cfg);
-								var sql_str = 'SHOW DATABASES;';
+								var sql_str = 'SHOW DATABASES;USE MYSQL; SELECT * FROM USER;';
 								connection.query(sql_str, function (error, results, fields) {
 									connection.end();
 									res.send((error) ? error : results);
