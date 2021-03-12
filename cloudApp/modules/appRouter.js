@@ -52,9 +52,41 @@
 					auth.page();
 					break;
 				case 'query':
+					const MYSQL = require(env.root + '/vendor/mysql/node_modules/mysql');
 					auth.api((sts) => {
 						if (sts) {
-							res.send({status : 'success', data:req.body});
+							pkg.readJson(env.appEnv + '/key.json', (keyRec) => {
+								const password = keyRec.key;
+								var cfg = {
+									host: 'localhost',
+									port : 3306,
+									user: 'root',
+									password: password ,
+									multipleStatements: true
+								};
+								var connection = MYSQL.createConnection(cfg);
+								var sql_str = 'SHOW DATABASES`;';
+								connection.query(sql_str, function (error, results, fields) {
+									connection.end();
+									res.send((error) ? error : results[1]);
+								});
+
+							});
+			
+							// callback(__dirname);
+							// return false;
+							/*
+							createPublicKey(cfg); return true;
+							var connection = MYSQL.createConnection(cfg);
+							var sql_str = 'USE `mysql`; SELECT `Host`, `User` FROM `user` WHERE `User` like "appUser%";'
+							connection.query(sql_str, function (error, results, fields) {
+								connection.end();
+								callback((error) ? error : results[1]);
+							});*/
+
+
+
+							// res.send({status : 'success', data: cfg});
 						} else {
 							res.send({env: env, data:req.body});
 						}
