@@ -2,8 +2,11 @@
 
 echo 8888 >> /tmp/rr.txt
 crond
-echo 9999 >> /tmp/rr.txt
+
 echo "* * * * * root (echo _EASY_MIN_CRON && echo 7789  >> /tmp/minCron.txt)" >> /etc/crontabe
+
+echo 7777 >> /tmp/rr.txt
+
 # Copyright (c) 2017, Oracle and/or its affiliates. All rights reserved.
 #
 # This program is free software; you can redistribute it and/or modify
