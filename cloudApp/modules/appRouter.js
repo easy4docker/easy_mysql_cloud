@@ -47,7 +47,7 @@
 				case 'postPageAuth':
 					auth.page();
 					break;
-				case 'api':
+				case 'query':
 					auth.api((sts) => {
 						if (sts) {
 							res.send({status : 'success', data:req.body});
