@@ -29,6 +29,7 @@ var pkg = {
             }
         })
     },
+    md5 : require('md5'),
     require : (fileName, isCache) => {
         if (!isCache) {
             delete require.cache[fileName];
@@ -36,8 +37,10 @@ var pkg = {
         return require(fileName);
     },
     crowdProcess : require(__dirname + '/vendor/crowdProcess/crowdProcess.js'),
+    ECT : require('ect')
 }
 
+app.engine('ect', pkg.ECT({ watch: true, cache: false, root: __dirname + '/views', ext : '.ect' }).render);
 
 app.use(bodyParser.json() );       // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({     // to support URL-encoded bodies   
