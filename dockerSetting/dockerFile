@@ -38,6 +38,6 @@ ENTRYPOINT ["/entrypoint.sh"]
 HEALTHCHECK CMD /healthcheck.sh
 EXPOSE 3306 33060
 
-CMD crond && mysqld
+CMD mysqld
 # CMD ["mysqld"]
 
