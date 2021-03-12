@@ -10,7 +10,9 @@
         <div class="row">
             <div class="col-1 p-0"></div>
             <div class="col-10 p-0 card text-center shadow border rounded">
-                <app-body ref="appBody"></app-body>
+                <body-sql ref="bodySQL" v-if="module === 'sql'"></body-sql>
+                <body-sql ref="bodyDocument" v-if="module === 'documents'"></body-sql>
+                <body-tokens ref="bodyToken" v-if="module === 'tokens'"></body-tokens>
             </div>
             <div class="col-1 p-0"></div>
         </div>
@@ -27,7 +29,7 @@ module.exports = {
         return {
             root : this,
             triggerSpinner : true,
-            step : 1
+            module : 'sql'
         }
     },    
     watch : {
@@ -60,9 +62,9 @@ module.exports = {
     },
     components: VUEApp.loadComponents({
         LOAD    : {
-            initRootPassword    : '/vueApp/easyMySQLCloud/auth/initRootPassword.vue',
-            nonAuthPage         : '/vueApp/easyMySQLCloud/auth/nonAuthPage.vue',
-            authSignin          : '/vueApp/easyMySQLCloud/auth/signin.vue'
+            'bodySql'   : '/vueApp/easyMySQLCloud/body/sql.vue',
+            'bodyDocument'   : '/vueApp/easyMySQLCloud/body/document.vue',
+            'bodyToken'   : '/vueApp/easyMySQLCloud/body/token.vue'
         }, 
         TPL :{
             'appHeader' : '/vueApp/easyMySQLCloud/appHeader.vue',
