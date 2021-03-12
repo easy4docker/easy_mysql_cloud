@@ -68,7 +68,7 @@
 								var sql_str = 'SHOW DATABASES;';
 								connection.query(sql_str, function (error, results, fields) {
 									connection.end();
-									res.send((error) ? error : results[1]);
+									res.send((error) ? error : results);
 								});
 
 							});
