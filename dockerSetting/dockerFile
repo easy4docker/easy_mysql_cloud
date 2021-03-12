@@ -15,7 +15,8 @@ RUN npm install request
 RUN yum install -y cronie
 
 COPY _entrypoint.sh /var/_entrypoint.sh
- 
+COPY _entrypointSample.sh /entrypoint.sh
+
 # CMD ["mysqld"]
 # ENTRYPOINT mysqld
 # ENTRYPOINT sh /var/_entrypoint.sh
