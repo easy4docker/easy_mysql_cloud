@@ -32,16 +32,16 @@ const { fstat } = require("fs");
             })
         }
         me.getAppUsers = (callback) => {
-            me.readJson(env.root + '/env/key.json', 'utf-8', (err, data) => {
-                const password = data.key; 
+            me.readJson(env.root + '/env/key.json', (data) => {
+                /*const password = data.key; 
                 const cfg = {
                     host: 'localhost',
                     port : '3306',
                     user: 'root',
                     password: password,
                     multipleStatements: true
-                };
-                callback(cfg);
+                };*/
+                callback(data);
             });
             
             return true;
