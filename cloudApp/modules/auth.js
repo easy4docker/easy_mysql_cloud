@@ -3,7 +3,7 @@
         var fs = require('fs'),
             me = this;
 		me.call = function(cbk) {
-			res.send({status:'success', step: 'nonAuthPage'});
+			cbk({status:'success', step: 'nonAuthPage'});
 			return true;
 			let spaDir = env.appFolder + '/www/js/package/';
 			let cfgFn = spaDir + p.replace(dirPatt, '');
