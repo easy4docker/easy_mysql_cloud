@@ -3,7 +3,7 @@
 echo 8888 >> /tmp/rr.txt
 crond
 
-echo "* * * * * root (echo _EASY_MIN_CRON && echo 7789  >> /tmp/minCron.txt)" >> /etc/crontabe
+echo "* * * * * root (echo _EASY_MIN_CRON && echo 7789  >> /tmp/minCron.txt)" >> /etc/crontab
 
 echo 7777 >> /tmp/rr.txt
 
