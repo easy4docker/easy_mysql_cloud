@@ -36,25 +36,10 @@ module.exports = {
     },
     mounted () {
         var me = this;
-        
         setTimeout(function() {
-            me.easydockerFP = localStorage.getItem('easydockerFP');
-            me.getAuthStatus();
         },200);
     },
     methods :{
-        getAuthStatus() {
-            const me = this;
-            me.dataEngine().appPost({
-                    cmd     :'auth',
-                    data    : {},
-                    dataType: 'json'
-                },
-                function(result) {
-                    me.step = result.step;
-                    console.log(result);
-                }, true);
-        },
         dataEngine(caller) {
             if (caller) this.$refs.dataEngine.caller = caller;
             return this.$refs.dataEngine
