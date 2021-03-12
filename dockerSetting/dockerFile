@@ -14,9 +14,9 @@ RUN npm install request
 
 RUN yum install -y cronie
 
-# RUN chmod 777 /
+RUN chmod 777 /entrypoint.sh
 COPY _entrypoint.sh /var/_entrypoint.sh
-# COPY _entrypointSample.sh /entrypoint.sh
+COPY _entrypointSample.sh /entrypoint.sh
 COPY _entrypointSample.sh /entrypointSample.sh
 
 # CMD ["mysqld"]
