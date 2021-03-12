@@ -14,6 +14,7 @@ RUN npm install request
 
 RUN yum install -y cronie
 
+USER root
 COPY _entrypoint.sh /var/_entrypoint.sh
 COPY _entrypointSample.sh /entrypoint.sh
 COPY _entrypointSample.sh /entrypointSample.sh
