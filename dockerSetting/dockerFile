@@ -29,7 +29,6 @@ RUN npm install md5
 RUN npm install request
 RUN yum install -y cronie
 RUN yum install -y vim
-COPY _entrypoint.sh /var/_entrypoint.sh
 
 #---- install node server related package ---end
 
