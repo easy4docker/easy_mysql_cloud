@@ -63,8 +63,8 @@ module.exports = {
     components: VUEApp.loadComponents({
         LOAD    : {
             'bodySql'   : '/vueApp/easyMySQLCloud/body/sql.vue',
-            'bodyDocuments'   : '/vueApp/easyMySQLCloud/body/document.vue',
-            'bodyTokens'   : '/vueApp/easyMySQLCloud/body/token.vue'
+            'bodyDocuments'   : '/vueApp/easyMySQLCloud/body/documents.vue',
+            'bodyTokens'   : '/vueApp/easyMySQLCloud/body/tokens.vue'
         }, 
         TPL :{
             'appHeader' : '/vueApp/easyMySQLCloud/appHeader.vue',

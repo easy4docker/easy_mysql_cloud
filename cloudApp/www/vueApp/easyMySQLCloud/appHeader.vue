@@ -15,9 +15,12 @@
                 </div>
             </div>
             <div class="container-fluid mt-1 head-menu-2 text-left">
-                <a href="JavaScript:void(0)" v-on:click="module('token')" class="m-3">Access Token</a> |
-                <a href="JavaScript:void(0)" v-on:click="module('sql')" class="m-3">SQL Tool</a> |
-                <a href="JavaScript:void(0)" v-on:click="module('documents')" class="m-3">Documents</a>
+                <a href="JavaScript:void(0)" v-on:click="module('tokens')" v-if="root.module !== 'tokens'" class="m-3 ml-1">Access Token</a>
+                <b class="m-3" v-if="root.module === 'tokens'">Access Token</b> |
+                <a href="JavaScript:void(0)" v-if="root.module !== 'sql'"  v-on:click="module('sql')" class="m-3">SQL Tool</a>
+                <b class="m-3" v-if="root.module === 'sql'">SQL Tool</b> |
+                <a href="JavaScript:void(0)" v-if="root.module !== 'ducuments'"  v-on:click="module('documents')" class="m-3">Documents</a>
+                <b class="m-3" v-if="root.module === 'ducuments'">Documents</b> |
             </div>
         </div>
     </div> 
