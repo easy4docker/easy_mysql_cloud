@@ -3,7 +3,8 @@
 		var me = this;
 		var fs = require('fs');
 		var path = require('path');
-
+		let AUTH = pkg.require(__dirname + '/auth.js');
+		let auth= new AUTH(env, pkg, req, res);
 		me.route = (rest) => {
 			if (rest === 'get') {
 				me.get();
@@ -11,7 +12,6 @@
 				me.post();
 			}
 		}
-
 		me.get = () => {
 			let p = req.params[0],
 			mp = p.match(/\/([^\/]+)(\/|$)/);
@@ -30,8 +30,6 @@
 			}
 
 			if (p == '/' || p == '/index.html') {
-				let AUTH = pkg.require(__dirname + '/auth.js');
-				let auth= new AUTH(env, pkg, req, res);
 				auth.page();
 			} else {
 				var fn = env.root + '/www' + p;
@@ -47,12 +45,17 @@
 		me.post = () => {
 			switch(req.body.cmd) {
 				case 'postPageAuth':
-					let AUTH = pkg.require(__dirname + '/auth.js');
-					let auth= new AUTH(env, pkg, req, res);
 					auth.page();
 					break;
 				case 'api':
-					res.send({env: env, data:req.body});
+					auth.api((sts) => {
+						if (sts) {
+							res.send({status : 'success', data:req.body});
+						} else {
+							res.send({env: env, data:req.body});
+						}
+					});
+					
 					break;
 				default :
 					res.send({env: env, data:req.body});
