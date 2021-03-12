@@ -11,8 +11,6 @@
             <div class="col-1 p-0"></div>
             <div class="col-10 p-0 card text-center shadow border rounded">
                 <app-body ref="appBody"></app-body>
-                <non-auth-page v-if="step === 'nonAuthPage'"></non-auth-page>
-                <init-root-password v-if="step === 'initRootPassword'"></init-root-password>
             </div>
             <div class="col-1 p-0"></div>
         </div>
@@ -78,5 +76,5 @@ module.exports = {
 </script>
  
 <style>
-.body-card { min-height : 40rem }
+.body-card { min-height : 32rem }
 </style>
