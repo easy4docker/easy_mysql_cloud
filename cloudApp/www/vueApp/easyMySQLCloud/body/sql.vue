@@ -26,13 +26,18 @@ module.exports = {
         }
     },
     mounted() {
+        const me = this;
+        me.queryDatabases();
     },
     watch : {
 
     },
     methods :{
         queryDatabases() {
-            
+            const me = this;
+            me.dataEngine().appPost({}, (result)=> {
+                console.log(result);
+            }, true);
         }
     }
 }
