@@ -10,10 +10,14 @@
                             <span class="version">(Version &alpha;)</span></h1>
                     </div>
                     <div class="col-2 p-0 m-0 text-right text-warning">
+                    
                     </div>
                 </div>
             </div>
-            <div class="container-fluid mt-1 head-menu-2">
+            <div class="container-fluid mt-1 head-menu-2 text-left">
+                <a href="JavaScript:void(0)" class="m-3">Access Token</a> |
+                <a href="JavaScript:void(0)" class="m-3">SQL Tool</a> |
+                <a href="JavaScript:void(0)" class="m-3">Documents</a>
             </div>
         </div>
     </div> 
