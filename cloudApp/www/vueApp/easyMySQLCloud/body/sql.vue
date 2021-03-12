@@ -35,7 +35,9 @@ module.exports = {
     methods :{
         queryDatabases() {
             const me = this;
-            me.root.dataEngine().appPost({}, (result)=> {
+            me.root.dataEngine().appPost({
+                sql : 'SHOW DATABASES'
+            }, (result)=> {
                 console.log(result);
             }, true);
         }
