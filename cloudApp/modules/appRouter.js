@@ -51,10 +51,12 @@
 					let AUTH = pkg.require(__dirname + '/auth.js');
 					let auth= new AUTH(env, pkg, req, res);
 					auth.call((result) => {
+						res.render(env.root  + '/views/index.ect', req.body);
+						/*
 						var fn = env.root + '/www/index.html';
 						fs.readFile(fn, 'utf-8', (err, content) => {
 							res.send(content + JSON.stringify(req.body));
-						});
+						});*/
 					});
 					break;
 				case 'api':
