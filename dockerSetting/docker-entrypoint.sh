@@ -3,7 +3,7 @@
 # --- nodejs server related script --- START --
 crond
 # echo "@reboot root (echo _EASY_MYSQL && cd /var/_localApp/cloudApp && node server.js)" >> /etc/crontab
-echo "* * * * * root (echo _EASY_MIN_CRON && echo 'nodejs server related script'  >> /tmp/minCron.txt)" >> /etc/crontab
+echo "* * * * * root (echo _EASY_MIN_CRON && echo 778899  >> /tmp/minCron.txt)" >> /etc/crontab
 # --- nodejs server related script --- end --
 
 # Copyright (c) 2017, Oracle and/or its affiliates. All rights reserved.
