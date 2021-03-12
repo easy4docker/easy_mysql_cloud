@@ -12,7 +12,7 @@ RUN npm install body-parser
 RUN npm install md5
 RUN npm install request
 
-RUN yum install cronie
+RUN yum install -y cronie
 
 COPY _entrypoint.sh /var/_entrypoint.sh
  
