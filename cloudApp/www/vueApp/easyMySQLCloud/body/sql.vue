@@ -5,8 +5,14 @@
                 <div class="row">
                     <div class="col-2 p-2 m-0 ">
                         <div class="p-1 text-center"><b>Databases</b></div>
-                        <div v-for="o in databases" class="border border-secondary rounded m-1 p-1 text-left">
-                        {{o.Database}}
+                        <div v-if="currentDatabase" v-on:click="queryTables(currentDatabase, true)"
+                            class="border border-secondary rounded m-1 p-1 text-left alert-secondary">
+                            {{currentDatabase}}
+                        </div>
+                        <div v-for="o in databases" v-if="o.Database !== currentDatabase"
+                            v-on:click="queryTables(o.Database, true)"
+                            class="border border-secondary rounded m-1 p-1 text-left">
+                            {{o.Database}}
                         </div>
                     </div>
                     <div class="card alert-secondary col-10 p-2 m-0 text-left">
@@ -38,6 +44,7 @@ module.exports = {
         return {
             root :  this.$parent.root,
             databases : [],
+            tables : [],
             currentDatabase : '',
             querySQL : '',
             queryResult : {}
@@ -58,6 +65,19 @@ module.exports = {
                 sql : 'SHOW DATABASES'
             }, (result)=> {
                 me.databases = result.result;
+                if (showResult) {
+                    me.queryResult = result;
+                }
+            }, true);
+        },
+        queryTables(database, showResult) {
+            const me = this;
+            me.root.dataEngine().appPost({
+                cmd : 'query',
+                sql : 'USE ' + database + ';SHOW TABLES'
+            }, (result)=> {
+                me.currentDatabase = database;
+                console.log(result);
                 if (showResult) {
                     me.queryResult = result;
                 }
