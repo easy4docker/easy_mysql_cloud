@@ -13,8 +13,7 @@
 					password: keyRec.key,
 					multipleStatements: true
 				};
-		
-				var connection = MYSQL.createConnection(cfg);
+				const connection = MYSQL.createConnection(cfg);
 				connection.query(sql, (error, results, fields) => {
 					connection.end();
 					callback((error) ? { status : 'failure', message : error.message} : 
