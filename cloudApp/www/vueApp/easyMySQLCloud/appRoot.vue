@@ -36,7 +36,9 @@ module.exports = {
     watch : {
         // -- Router related code
         module :  function (newValue, oldValue) {
+            /*
             history.pushState('', '', '/app/' + newValue);
+            */
         } 
     },
     mounted () {
