@@ -58,7 +58,7 @@ module.exports = {
     },
     mounted() {
         const me = this;
-        me.queryDatabases();
+        me.queryDatabases(true);
     },
     watch : {
 
@@ -66,20 +66,24 @@ module.exports = {
     methods :{
         queryDatabases(showResult) {
             const me = this;
+            const sql_str = 'SHOW DATABASES';
             me.root.dataEngine().appPost({
                 cmd : 'query',
-                sql : 'SHOW DATABASES'
+                sql : sql_str
             }, (result)=> {
                 me.databases = result.result;
                 if (showResult) {
+                    me.querySQL = sql_str;
                     me.queryResult = result;
                 }
             }, true);
         },
         queryTables(database, showResult) {
             const me = this;
+            const sql_str = 'USE ' + database + ';SHOW TABLES';
             if (!database) {
                 if (me.tables.length) {
+                    me.querySQL = '';
                     me.tables = [];
                 } else {
                     me.queryTables(me.currentDatabase, true);
@@ -87,11 +91,12 @@ module.exports = {
             } else {
                 me.root.dataEngine().appPost({
                     cmd : 'query',
-                    sql : 'USE ' + database + ';SHOW TABLES'
+                    sql : sql_str
                 }, (result)=> {
                     me.currentDatabase = database;
                     
                     if (showResult) {
+                        me.querySQL = sql_str;
                         me.tables = result.result[1];
                     }
                 }, true);
