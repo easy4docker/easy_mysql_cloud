@@ -6,7 +6,7 @@
                     <div class="col-3 p-2 m-0 ">
                         <div class="p-1 text-center"><b>Databases</b></div>
                         <div v-if="currentDatabase"  class="current-db border border-secondary rounded m-1 p-1 text-left alert-secondary">
-                            <a href="JavaScript:void(o)" v-on:click="queryTables('', true)">{{currentDatabase}}</a>
+                            <a href="JavaScript:void(o)" v-on:click="queryTables('', true)" class="m-1">{{currentDatabase}}</a>
                             <div class="current-db-body overflow-auto bg-secondary">
                                 <div v-for="o in tables" class="ml-2 mt-1">
                                 <a href="JavaScript:void(0)"  v-on:click="tableSQL(o['Tables_in_' + currentDatabase])"
@@ -126,6 +126,7 @@ module.exports = {
         },
         querySubmit() {
             const me = this;
+            me.queryResult = '';
             me.root.dataEngine().appPost({
                 cmd : 'query',
                 sql : me.querySQL
