@@ -5,9 +5,9 @@
                 <div class="row">
                     <div class="col-3 p-1 m-0 ">
                         <div class="pl-2 m-0 text-left"><h5>Tokens:</h5></div>
-                        <div v-if="currentToken"  class="current-db border border-secondary rounded m-1 p-1 text-left alert-secondary">
+                        <div class="current-db border border-success rounded m-1 p-1 text-left alert-success">
                             <div class="p-1">
-                                <a href="JavaScript:void(o)">{{currentToken}}</a>
+                                <a href="JavaScript:void(o)" v-on:click="addToken()">Add Token</a>
                             </div>
                         </div>
                         <div v-for="o in tokens "
@@ -16,7 +16,10 @@
                         </div>
                     </div>
                     <div class="card tokens-body-section alert-secondary col-9 p-2 m-0 text-left">
+                        
                         Tokens Management
+                        <div v-if="module === 'addToken'">Add Token Page</div>
+                        <div v-if="module !== 'addToken'">Token Details</div>
                     </div>
                 </div>
             </div>
@@ -29,8 +32,9 @@ module.exports = {
     data: function() {
         return {
             root :  this.$parent.root,
-            tokens : [],
-            currentToken : ''
+            tokens : ['test1', 'test2', 'test3'],
+            currentToken : '',
+            module : ''
         }
     },
     mounted() {
@@ -39,6 +43,10 @@ module.exports = {
 
     },
     methods :{
+        addToken() {
+            const me = this;
+            me.module = 'addToken';
+        }
     }
 }
 </script>
