@@ -8,10 +8,11 @@
                         <div v-if="currentDatabase"  class="current-db border border-secondary rounded m-1 p-1 text-left alert-secondary">
                             <a href="JavaScript:void(o)" v-on:click="queryTables('', true)">{{currentDatabase}}</a>
                             <div class="current-db-body overflow-auto bg-secondary">
-                                <div v-for="o in tables"
-                                    class="ml-2 mt-1 text-left text-light">
+                                <div v-for="o in tables" class="ml-2 mt-1">
+                                <a href="JavaScript:void(0)"  v-on:click="tableSQL(o['Tables_in_' + currentDatabase])"
+                                   class="text-left text-light" >
                                     {{o['Tables_in_' + currentDatabase]}}
-                                </div>
+                                </a></div>
                             </div>  
                         </div>
                         <div v-for="o in databases" v-if="o.Database !== currentDatabase"
@@ -95,7 +96,11 @@ module.exports = {
                     }
                 }, true);
             }
-
+        },
+        tableSQL(table) {
+            const me = this;
+            me.querySQL = 'USE ' + me.currentDatabase + ';SELECT * FROM ' + table;
+            me.querySubmit();
         },
         protectMessage() {
             const me = this;
