@@ -3,19 +3,19 @@
         <div class="card-body m-0 p-1">
             <div class="container-fluid m-0 head-menu-1">
                 <div class="row">
-                    <div class="col-3 p-2 m-0 ">
+                    <div class="col-2 p-2 m-0 ">
                         <div class="p-1 text-center"><b>Databases</b></div>
                         <div v-for="o in databases" class="border border-secondary rounded m-1 p-1 text-left">
                         {{o.Database}}
                         </div>
                     </div>
-                    <div class="col-9 p-2 m-0 text-left">
+                    <div class="card alert-secondary col-10 p-2 m-0 text-left">
                         <div class="form-group">
-                            <label class="pl-3">Query:</label>
+                            <label class="pl-2">Query:</label>
                             <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                         </div>
                         <div class="form-group">
-                            <label class="pl-3">Result:</label>
+                            <label class="pl-2">Result:</label>
                             <div class="overflow-auto result-section p-3 rounded bg-dark border-secondary">
                                 <pre class="text-success p-1">{{queryResult}}</pre>
                             </div>
