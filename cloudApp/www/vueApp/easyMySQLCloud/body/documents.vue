@@ -1,5 +1,5 @@
 <template>
-    <div class="body-card card m-1">
+    <div class="body-card m-1">
         <div class="card-body m-0 p-1">
             <div class="container-fluid m-0 head-menu-1">
                 <div class="row">
