@@ -16,8 +16,6 @@
                         </div>
                     </div>
                     <div class="card tokens-body-section alert-secondary col-9 p-2 m-0 text-left">
-                        
-                        Tokens Management
                         <div v-if="module === 'addToken'">Add Token Page</div>
                         <div v-if="module !== 'addToken'">Token Details</div>
                     </div>
