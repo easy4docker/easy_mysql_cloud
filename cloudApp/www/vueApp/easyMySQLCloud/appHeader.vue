@@ -48,10 +48,10 @@ module.exports = {
  
 <style>
 .head-card {
-    min-height: 5.8rem;
+    min-height: 8rem;
 }
 .head-menu-1 {
-    height: 7rem;
+    height: 6rem;
 }
 .head-menu-2 {
     height: 1.5rem;
