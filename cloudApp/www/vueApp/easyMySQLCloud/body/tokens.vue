@@ -7,7 +7,7 @@
                         <div class="pl-2 m-0 text-left"><h5>Tokens:</h5></div>
                         <div class="current-db border border-success rounded m-1 p-1 text-left alert-success">
                             <div class="p-1">
-                                <a href="JavaScript:void(o)" v-on:click="addToken()">Add Token</a>
+                                <a href="JavaScript:void(0)" v-on:click="addToken()">Add Token</a>
                             </div>
                         </div>
                         <div v-for="o in tokens "
@@ -59,7 +59,13 @@ module.exports = {
             me.tokens.push('new-' + new Date().getTime());
         },
         generateToken() {
-
+            const me = this;
+            me.root.dataEngine().appPost({
+                cmd : 'token',
+                code : 'generateToken'
+            }, (result)=> {
+                console.log(result);
+            }, true);
         }
     }
 }

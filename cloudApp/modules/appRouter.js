@@ -71,6 +71,15 @@
 						}
 					});
 					break;
+				case 'token':
+					auth.api((sts) => {
+						if (sts) {
+							res.send({status: 'success', message: sts});} 
+						else {
+							res.send({status: 'failure', message: 'Authentication failed!'});
+						}
+					});
+					break;
 				default :
 					res.send({status: 'failure', message: 'wrong CMD code!'});
 			}
