@@ -5,9 +5,8 @@
                 <div class="row">
                     <div class="col-3 p-2 m-0 ">
                         <div class="p-1 text-center"><b>Databases</b></div>
-                        <div v-if="currentDatabase" v-on:click="queryTables('', true)"
-                            class="current-db border border-secondary rounded m-1 p-1 text-left alert-secondary">
-                            {{currentDatabase}}
+                        <div v-if="currentDatabase"  class="current-db border border-secondary rounded m-1 p-1 text-left alert-secondary">
+                            <a href="JavaScript:void(o)" v-on:click="queryTables('', true)">{{currentDatabase}}</a>
                             <div class="current-db-body overflow-auto bg-secondary">
                                 <div v-for="o in tables"
                                     class="ml-2 mt-1 text-left text-light">
