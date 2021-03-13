@@ -12,7 +12,8 @@
                     <div class="card alert-secondary col-10 p-2 m-0 text-left">
                         <div class="form-group">
                             <label class="pl-2">Query:</label>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                            <button class="btn btn-sm btn-success pull-right m-1" v-on:click="querySubmit()">Submit</button>
+                            <textarea class="form-control" v-model="querySQL" rows="3"></textarea>
                         </div>
                         <div class="form-group">
                             <label class="pl-2">Result:</label>
@@ -48,15 +49,26 @@ module.exports = {
 
     },
     methods :{
-        queryDatabases() {
+        queryDatabases(showResult) {
             const me = this;
             me.root.dataEngine().appPost({
                 cmd : 'query',
                 sql : 'SHOW DATABASES'
             }, (result)=> {
                 me.databases = result.result;
+                if (showResult) {
+                    me.queryResult = result;
+                }
+            }, true);
+        },
+        querySubmit() {
+            const me = this;
+            me.root.dataEngine().appPost({
+                cmd : 'query',
+                sql : me.querySQL
+            }, (result)=> {
                 me.queryResult = result;
-                console.log(result);
+                me.queryDatabases(false);
             }, true);
         }
     }
