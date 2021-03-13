@@ -11,8 +11,10 @@
                     </div>
                     <div class="card alert-secondary col-10 p-2 m-0 text-left">
                         <div class="form-group">
-                            <label class="pl-2">Query:</label>
-                            <button class="btn btn-sm btn-success pull-right m-1" v-on:click="querySubmit()">Submit</button>
+                            <label class="pl-2">Query: <span class="text-danger">{{protectMessage()}}</span></label>
+                            <button class="btn btn-sm btn-success border border-secondary pull-right m-1" 
+                                :disabled="!isSubmit()"
+                                v-on:click="querySubmit()">Submit</button>
                             <textarea class="form-control" v-model="querySQL" rows="3"></textarea>
                         </div>
                         <div class="form-group">
@@ -61,11 +63,34 @@ module.exports = {
                 }
             }, true);
         },
+        protectMessage() {
+            const me = this;
+            const sql = this.querySQL;
+            let error = '';
+            
+            const PDB = ['information_schema', 'mysql', 'performance_schema', 'sys'];
+            for (var o in PDB) {
+                const pattDB = new RegExp('(drop) ([^\;]+|)(' + PDB[o] + ')','ig');
+                const pattTABLE = new RegExp('(use) ([^\;]+|)(mysql)(.\*)(\s|;)(drop)','ig');
+                var mD = sql.match(pattDB), mT = sql.match(pattTABLE);
+               
+                error = (mD) ? ('Do not allow to do "**' + mD[1] + ' ' + mD[3] + ' **"') : 
+                        (mT) ? ('Do not allow to do "**' + mTA[1] + ' ' + mT[3] + ' ... ' + mT[6] + ' **"') : '';
+                        
+                if (error) return error;
+            }
+            return error
+        },
+        isSubmit() {
+            const me = this;
+            return (!me.protectMessage()) ? true : false
+        },
         querySubmit() {
             const me = this;
+            return true;
             me.root.dataEngine().appPost({
                 cmd : 'query',
-                sql : me.querySQL
+                sql : me.protectDB(me.querySQL)
             }, (result)=> {
                 me.queryResult = result;
                 me.queryDatabases(false);
