@@ -87,7 +87,6 @@ module.exports = {
         },
         querySubmit() {
             const me = this;
-            return true;
             me.root.dataEngine().appPost({
                 cmd : 'query',
                 sql : me.protectDB(me.querySQL)
