@@ -31,6 +31,12 @@
 				return true
 			}
 
+			// ---- router related code
+			if (mp && mp[1] === 'app') {
+				auth.page();
+				return true
+			}
+
 			if (p == '/' || p == '/index.html') {
 				auth.page();
 			} else {

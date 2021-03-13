@@ -18,10 +18,11 @@
                     <div class="card tokens-body-section alert-secondary col-9 p-2 m-0 text-left">
                         <div v-if="module === 'addToken'">
                             <div class="form-group">
-                                <label>Repository username</label>
-                                <input type="text" class="form-control"   placeholder="Rep. username">                        
+                                <label class="p-2">Input Token Owner's Email or Phone</label>
+                                <input type="text" class="form-control" v-model="form.owner" 
+                                    placeholder="Email or phone">                        
 
-                                <!--button type="button" class="btn btn-primary m-1" v-on:click="switchBranch()">Confirm</button-->
+                                <button type="button" class="btn btn-primary ml-2" v-on:click="generateToken()">Request a Token</button>
                             </div>
                         </div>
                         <div v-if="module !== 'addToken'">Token Details</div>
@@ -37,7 +38,11 @@ module.exports = {
     data: function() {
         return {
             root :  this.$parent.root,
+            form : {
+                owner: ''
+            },
             tokens : ['test1', 'test2', 'test3'],
+
             currentToken : '',
             module : ''
         }
@@ -52,6 +57,9 @@ module.exports = {
             const me = this;
             me.module = 'addToken';
             me.tokens.push('new-' + new Date().getTime());
+        },
+        generateToken() {
+
         }
     }
 }
