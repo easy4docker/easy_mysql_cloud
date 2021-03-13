@@ -79,8 +79,11 @@ module.exports = {
         queryTables(database, showResult) {
             const me = this;
             if (!database) {
-                me.currentDatabase = '';
-                me.tables = [];
+                if (me.tables.length) {
+                    me.tables = [];
+                } else {
+                    me.queryTables(me.currentDatabase, true);
+                }
             } else {
                 me.root.dataEngine().appPost({
                     cmd : 'query',
