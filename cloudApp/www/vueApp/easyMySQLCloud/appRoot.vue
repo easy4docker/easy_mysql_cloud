@@ -11,8 +11,9 @@
             <div class="col-1 p-0"></div>
             <div class="col-10 p-0 card text-center shadow border rounded">
                 <body-sql ref="bodySQL" v-if="module === 'sql'"></body-sql>
+                <body-tokens ref="bodyTokens" v-if="module === 'tokens'"></body-tokens>
                 <body-documents ref="bodyDocuments" v-if="module === 'documents'"></body-documents>
-                <body-data ref="bodyTokens" v-if="module === 'data'"></body-data>
+                <body-data ref="bodyData" v-if="module === 'data'"></body-data>
             </div>
             <div class="col-1 p-0"></div>
         </div>
@@ -49,7 +50,8 @@ module.exports = {
         LOAD    : {
             'bodySql'   : '/vueApp/easyMySQLCloud/body/sql.vue',
             'bodyDocuments'   : '/vueApp/easyMySQLCloud/body/documents.vue',
-            'bodyData'   : '/vueApp/easyMySQLCloud/body/data.vue'
+            'bodyData'   : '/vueApp/easyMySQLCloud/body/data.vue',
+            'bodyTokens'   : '/vueApp/easyMySQLCloud/body/tokens.vue'
         }, 
         TPL :{
             'appHeader' : '/vueApp/easyMySQLCloud/appHeader.vue',

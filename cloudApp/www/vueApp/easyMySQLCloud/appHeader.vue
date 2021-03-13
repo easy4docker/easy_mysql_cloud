@@ -22,6 +22,8 @@
                 <b class="m-3" v-if="root.module === 'sql'">SQL Tool</b> |
                 <a href="JavaScript:void(0)" v-on:click="module('data')" v-if="root.module !== 'data'" class="m-3 ml-1">Data Management</a>
                 <b class="m-3" v-if="root.module === 'data'">Data Management</b> |
+                <a href="JavaScript:void(0)" v-on:click="module('tokens')" v-if="root.module !== 'tokens'" class="m-3 ml-1">Tokens Management</a>
+                <b class="m-3" v-if="root.module === 'tokens'">Tokens Management</b> |
                 <a href="JavaScript:void(0)" v-if="root.module !== 'documents'"  v-on:click="module('documents')" class="m-3">Documents</a>
                 <b class="m-3" v-if="root.module === 'documents'">Documents</b>
             </div>
