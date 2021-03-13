@@ -3,11 +3,17 @@
         <div class="card-body m-0 p-1">
             <div class="container-fluid m-0 head-menu-1">
                 <div class="row">
-                    <div class="col-2 p-2 m-0 ">
+                    <div class="col-3 p-2 m-0 ">
                         <div class="p-1 text-center"><b>Databases</b></div>
-                        <div v-if="currentDatabase" v-on:click="queryTables(currentDatabase, true)"
-                            class="border border-secondary rounded m-1 p-1 text-left alert-secondary">
+                        <div v-if="currentDatabase" v-on:click="queryTables('', true)"
+                            class="current-db border border-secondary rounded m-1 p-1 text-left alert-secondary">
                             {{currentDatabase}}
+                            <div class="current-db-body overflow-auto bg-secondary">
+                                <div v-for="o in tables"
+                                    class="ml-2 mt-1 text-left text-light">
+                                    {{o['Tables_in_' + currentDatabase]}}
+                                </div>
+                            </div>  
                         </div>
                         <div v-for="o in databases" v-if="o.Database !== currentDatabase"
                             v-on:click="queryTables(o.Database, true)"
@@ -15,7 +21,7 @@
                             {{o.Database}}
                         </div>
                     </div>
-                    <div class="card alert-secondary col-10 p-2 m-0 text-left">
+                    <div class="card alert-secondary col-9 p-2 m-0 text-left">
                         <div class="form-group">
                             <label class="pl-2">Query: <span class="text-danger">{{protectMessage()}}</span></label>
                             <button class="btn btn-sm btn-success border border-secondary pull-right m-1" 
@@ -72,16 +78,22 @@ module.exports = {
         },
         queryTables(database, showResult) {
             const me = this;
-            me.root.dataEngine().appPost({
-                cmd : 'query',
-                sql : 'USE ' + database + ';SHOW TABLES'
-            }, (result)=> {
-                me.currentDatabase = database;
-                console.log(result);
-                if (showResult) {
-                    me.queryResult = result;
-                }
-            }, true);
+            if (!database) {
+                me.currentDatabase = '';
+                me.tables = [];
+            } else {
+                me.root.dataEngine().appPost({
+                    cmd : 'query',
+                    sql : 'USE ' + database + ';SHOW TABLES'
+                }, (result)=> {
+                    me.currentDatabase = database;
+                    
+                    if (showResult) {
+                        me.tables = result.result[1];
+                    }
+                }, true);
+            }
+
         },
         protectMessage() {
             const me = this;
@@ -122,5 +134,11 @@ module.exports = {
 <style>
 .result-section {
     height: 26rem; border: 6px solid #999;
+}
+.current-db {
+    max-height: 28rem;
+}
+.current-db-body {
+    max-height: 26rem;
 }
 </style>
