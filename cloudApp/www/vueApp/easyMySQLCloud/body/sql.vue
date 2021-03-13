@@ -1,7 +1,7 @@
 <template>
     <div class="body-card m-1">
         <div class="card-body m-0 p-1">
-            <div class="container-fluid m-0 head-menu-1">
+            <div class="container-fluid m-0">
                 <div class="row">
                     <div class="col-3 p-1 m-0 ">
                         <div class="pl-2 m-0 text-left"><h5>Databases:</h5></div>
@@ -39,8 +39,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="container-fluid mt-1 head-menu-2">
             </div>
         </div>
     </div> 
