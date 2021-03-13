@@ -3,8 +3,12 @@
         <div class="card-body m-0 p-1">
             <div class="container-fluid m-0 head-menu-1">
                 <div class="row">
-                    <div class="col-2 p-2 m-0 text-left">
-                    Databases
+                    <div class="col-2 p-2 m-0 text-center">
+                        Databases
+                        <hr/>
+                        <div v-for="o in databases" class="border border-secondary rounded m-1 p-1 text-left">
+                        {{o.Database}}
+                        </div>
                     </div>
                     <div class="col-10 p-2 m-0 text-left">
                     body SQL
@@ -22,7 +26,7 @@ module.exports = {
     data: function() {
         return {
             root :  this.$parent.root,
-            module : ''
+            databases : []
         }
     },
     mounted() {
@@ -39,6 +43,7 @@ module.exports = {
                 cmd : 'query',
                 sql : 'SHOW DATABASES'
             }, (result)=> {
+                me.databases = result.result;
                 console.log(result);
             }, true);
         }
