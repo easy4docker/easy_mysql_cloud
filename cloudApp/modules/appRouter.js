@@ -52,49 +52,21 @@
 					auth.page();
 					break;
 				case 'query':
-					const MYSQL = require(env.root + '/vendor/mysql/node_modules/mysql');
 					auth.api((sts) => {
 						if (sts) {
-							pkg.readJson(env.appEnv + '/key.json', (keyRec) => {
-								const password = keyRec.key;
-								var cfg = {
-									host: 'localhost',
-									port : 3306,
-									user: 'root',
-									password: password ,
-									multipleStatements: true
-								};
-								var connection = MYSQL.createConnection(cfg);
-								var sql_str = 'SHOW DATABASES;USE MYSQL; SELECT * FROM USER;';
-								connection.query(sql_str, function (error, results, fields) {
-									connection.end();
-									res.send((error) ? error : results);
-								});
-
-							});
-			
-							// callback(__dirname);
-							// return false;
-							/*
-							createPublicKey(cfg); return true;
-							var connection = MYSQL.createConnection(cfg);
-							var sql_str = 'USE `mysql`; SELECT `Host`, `User` FROM `user` WHERE `User` like "appUser%";'
-							connection.query(sql_str, function (error, results, fields) {
-								connection.end();
-								callback((error) ? error : results[1]);
-							});*/
-
-
-
-							// res.send({status : 'success', data: cfg});
+							const SQL = pkg.require(__dirname + '/sql.js');
+							const sql = new SQL(env, pkg);
+	
+							sql.query('SHOW DATABASES; USE MYSQL; SELECT * FROM USER', (result) => {
+									res.send(result);
+							}); 
 						} else {
-							res.send({env: env, data:req.body});
+							res.send({status: 'failure', message: 'Authentication failed!'});
 						}
 					});
-					
 					break;
 				default :
-					res.send({env: env, data:req.body});
+					res.send({status: 'failure', message: 'wrong CMD code!'});
 			}
 		};
 
