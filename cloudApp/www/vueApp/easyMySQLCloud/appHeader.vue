@@ -3,9 +3,9 @@
         <div class="card-body m-0 p-1 alert-info header-bg ">
             <div class="container-fluid m-0 head-menu-1">
                 <div class="row">
-                    <div class="col-2 p-0 m-0 text-left">
+                    <div class="col-1 p-0 m-0 text-left">
                     </div>
-                    <div class="col-8 p-3 text-center">
+                    <div class="col-9 p-3 text-center">
                         <h1 class="header-title m-3 text-light">Easy MySQL Cloud 
                             <span class="version">(Version &alpha;)</span></h1>
                     </div>
