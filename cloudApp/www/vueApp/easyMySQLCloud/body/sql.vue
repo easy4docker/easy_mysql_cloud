@@ -84,6 +84,7 @@ module.exports = {
             if (!database) {
                 if (me.tables.length) {
                     me.querySQL = '';
+                    me.queryResult = '';
                     me.tables = [];
                 } else {
                     me.queryTables(me.currentDatabase, true);
