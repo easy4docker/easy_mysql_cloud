@@ -3,8 +3,8 @@
         <div class="card-body m-0 p-1">
             <div class="container-fluid m-0 head-menu-1">
                 <div class="row">
-                    <div class="col-3 p-2 m-0 ">
-                        <div class="p-1 text-center"><b>Databases</b></div>
+                    <div class="col-3 p-1 m-0 ">
+                        <div class="pl-2 m-0 text-left"><h5>Databases:</h5></div>
                         <div v-if="currentDatabase"  class="current-db border border-secondary rounded m-1 p-1 text-left alert-secondary">
                             <a href="JavaScript:void(o)" v-on:click="queryTables('', true)" class="m-1">{{currentDatabase}}</a>
                             <div class="current-db-body overflow-auto bg-secondary">
