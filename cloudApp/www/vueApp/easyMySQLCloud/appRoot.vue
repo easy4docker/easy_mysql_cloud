@@ -63,5 +63,5 @@ module.exports = {
 </script>
  
 <style>
-.body-card { min-height : 32rem }
+.body-card { min-height : 40em }
 </style>
