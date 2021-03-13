@@ -16,7 +16,14 @@
                         </div>
                     </div>
                     <div class="card tokens-body-section alert-secondary col-9 p-2 m-0 text-left">
-                        <div v-if="module === 'addToken'">Add Token Page</div>
+                        <div v-if="module === 'addToken'">
+                            <div class="form-group">
+                                <label>Repository username</label>
+                                <input type="text" class="form-control"   placeholder="Rep. username">                        
+
+                                <!--button type="button" class="btn btn-primary m-1" v-on:click="switchBranch()">Confirm</button-->
+                            </div>
+                        </div>
                         <div v-if="module !== 'addToken'">Token Details</div>
                     </div>
                 </div>
@@ -44,6 +51,7 @@ module.exports = {
         addToken() {
             const me = this;
             me.module = 'addToken';
+            me.tokens.push('new-' + new Date().getTime());
         }
     }
 }
