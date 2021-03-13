@@ -67,15 +67,15 @@ module.exports = {
             const me = this;
             const sql = this.querySQL;
             let error = '';
-            
+           
             const PDB = ['information_schema', 'mysql', 'performance_schema', 'sys'];
             for (var o in PDB) {
                 const pattDB = new RegExp('(drop) ([^\;]+|)(' + PDB[o] + ')','ig');
-                const pattTABLE = new RegExp('(use) ([^\;]+|)(mysql)(.\*)(\s|;)(drop)','ig');
+                const pattTABLE = new RegExp('(use) ([^\;]+|)(mysql)(.\*)( |;)(drop)','ig');
                 var mD = sql.match(pattDB), mT = sql.match(pattTABLE);
-               
-                error = (mD) ? ('Do not allow to do "**' + mD[1] + ' ' + mD[3] + ' **"') : 
-                        (mT) ? ('Do not allow to do "**' + mTA[1] + ' ' + mT[3] + ' ... ' + mT[6] + ' **"') : '';
+
+                error = (mD) ? ('Do not allow to do **' + mD[0] + ' **!') : 
+                        (mT) ? ('Do not allow to do **' + mT[0] +' **!') : '';
                         
                 if (error) return error;
             }
@@ -83,7 +83,7 @@ module.exports = {
         },
         isSubmit() {
             const me = this;
-            return (!me.protectMessage()) ? true : false
+            return (!me.protectMessage() && me.querySQL) ? true : false
         },
         querySubmit() {
             const me = this;
