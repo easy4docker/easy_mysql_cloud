@@ -44,6 +44,7 @@
 				});
 			}
 		};
+		
 		me.post = () => {
 			let AUTH = pkg.require(__dirname + '/auth.js');
 			let auth= new AUTH(env, pkg, req, res);
@@ -56,8 +57,7 @@
 						if (sts) {
 							const SQL = pkg.require(__dirname + '/sql.js');
 							const sql = new SQL(env, pkg);
-	
-							sql.query('SHOW DATABASES; USE MYSQL; SELECT * FROM USER', (result) => {
+							sql.query(req.body.sql, (result) => {
 									res.send(result);
 							}); 
 						} else {

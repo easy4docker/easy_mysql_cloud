@@ -3,7 +3,7 @@
         const fs = require('fs'),
             me = this,
 			MYSQL = require(env.root + '/vendor/mysql/node_modules/mysql');
-		
+
 		me.query = (sql, callback) => {
 			pkg.readJson(env.appEnv + '/key.json', (keyRec) => {
 				const cfg = {
