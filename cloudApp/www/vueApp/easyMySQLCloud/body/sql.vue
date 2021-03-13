@@ -7,7 +7,11 @@
                         <div class="pl-2 m-0 text-left"><h5>Databases:</h5></div>
                         <div v-if="currentDatabase"  class="current-db border border-secondary rounded m-1 p-1 text-left alert-secondary">
                             <div class="p-1">
-                                <a href="JavaScript:void(o)" v-on:click="queryTables('', true)">{{currentDatabase}}</a>
+                                {{currentDatabase}}
+                                <a href="JavaScript:void(o)" v-on:click="queryTables('', true)">
+                                    <i class="fa fa-angle-double-up pull-right" v-if="!!tables.length" aria-hidden="true"></i>
+                                    <i class="fa fa-angle-double-right pull-right" v-if="!tables.length" aria-hidden="true"></i>
+                                </a>
                             </div>
                             <div class="current-db-body overflow-auto bg-secondary">
                                 <div v-for="o in tables" class="ml-2 mt-1">
@@ -22,6 +26,7 @@
                             class="border border-secondary rounded m-1 p-1 text-left">
                             {{o.Database}}
                         </div>
+                        
                     </div>
                     <div class="card alert-secondary col-9 p-2 m-0 text-left">
                         <div class="form-group">
@@ -150,7 +155,7 @@ module.exports = {
     height: 26rem; border: 6px solid #999;
 }
 .current-db {
-    max-height: 28rem;
+    max-height: 30rem;
 }
 .current-db-body {
     max-height: 26rem;
