@@ -6,7 +6,9 @@
                     <div class="col-3 p-1 m-0 ">
                         <div class="pl-2 m-0 text-left"><h5>Databases:</h5></div>
                         <div v-if="currentDatabase"  class="current-db border border-secondary rounded m-1 p-1 text-left alert-secondary">
-                            <a href="JavaScript:void(o)" v-on:click="queryTables('', true)" class="m-1">{{currentDatabase}}</a>
+                            <div class="p-1">
+                                <a href="JavaScript:void(o)" v-on:click="queryTables('', true)">{{currentDatabase}}</a>
+                            </div>
                             <div class="current-db-body overflow-auto bg-secondary">
                                 <div v-for="o in tables" class="ml-2 mt-1">
                                 <a href="JavaScript:void(0)"  v-on:click="tableSQL(o['Tables_in_' + currentDatabase])"
