@@ -15,12 +15,30 @@
     <div class="row">
         <div class="col-1 p-0"></div>
         <div class="col-10 p-0 card text-center shadow border rounded">
-          <div class="body-card card m-1">
-            <div class="card-body m-0 p-1 text-danger">
-              <i class="fa fa-bell" aria-hidden="true"></i> This is a wrong request. Please go to EasyDocker Admin link with an authrized token.  
-              <br/>
-              <img class="m-3 border rounded border-info" src="/images/example-non-auth-page.png" width="80%">
+          <div class="text-center card m-1">
+            <div class="text-danger m-2"><i class="fa fa-bell" aria-hidden="true"></i> This is a unauthorized wrong request! </div>
+            <div class="container-fluid m-0 p-1">
+                <div class="row">
+                  <div class="col-2"></div>
+                  <div class="col-8 p-2 text-left alert-secondary">
+                    <label class="pl-2">Input an auth token</label>
+                    <input type="text" class="form-control" placeholder="Input your auth token">                        
+                    <button type="button" class="btn btn-primary mt-2">Submitt token</button>     
+                  </div>
+                  <div class="col-2"></div>
+                </div>
+                <div class="row">
+                  <div class="col-2"></div>
+                  <div class="col-8 p-0 text-left">
+                      <div class="m-2">
+                        OR Please go back to EasyDocker Admin and link with an authrized token.
+                      </div>
+                      <img class="border rounded border-info mb-3" src="/images/example-non-auth-page.png" width="100%">    
+                  </div>
+                  <div class="col-2"></div>
+                </div>
             </div>
+           
           </div> 
         </div>
         <div class="col-1 p-0"></div>
