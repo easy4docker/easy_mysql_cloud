@@ -72,11 +72,18 @@
 					});
 					break;
 				case 'token':
+					let TOKENS = pkg.require(__dirname + '/tokens.js');
+					let tokens = new TOKENS(env, pkg);
 					auth.api((sts) => {
 						if (sts) {
-							res.send({status: 'success', message: sts});} 
-						else {
-							res.send({status: 'failure', message: 'Authentication failed!'});
+							tokens.call(req.body,(result)=> {
+								res.send({status: 'success', result :result});
+							});
+							
+						} else {
+							tokens.call(req.body,()=> {
+								res.send({status: 'failure', message: 'Authentication failed!'});;
+							});
 						}
 					});
 					break;

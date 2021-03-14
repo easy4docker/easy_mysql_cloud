@@ -48,6 +48,7 @@ module.exports = {
         }
     },
     mounted() {
+        this.getTokes();
     },
     watch : {
 
@@ -57,6 +58,15 @@ module.exports = {
             const me = this;
             me.module = 'addToken';
             me.tokens.push('new-' + new Date().getTime());
+        },
+        getTokes() {
+            const me = this;
+            me.root.dataEngine().appPost({
+                cmd : 'token',
+                code : 'getTokes'
+            }, (result)=> {
+                me.tokens = (!result || !result.tokens) ? [] : result.result;
+            }, true);
         },
         generateToken() {
             const me = this;

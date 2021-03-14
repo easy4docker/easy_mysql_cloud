@@ -29,8 +29,8 @@ module.exports = {
     data: function() {
         return {
             root : this,
-            triggerSpinner : true,
-            module : 'sql'
+            triggerSpinner : false,
+            module : 'tokens'
         }
     },    
     watch : {
@@ -55,10 +55,11 @@ module.exports = {
     },
     components: VUEApp.loadComponents({
         LOAD    : {
+            'bodyTokens'   : '/vueApp/easyMySQLCloud/body/tokens.vue',
             'bodySql'   : '/vueApp/easyMySQLCloud/body/sql.vue',
             'bodyDocuments'   : '/vueApp/easyMySQLCloud/body/documents.vue',
-            'bodyData'   : '/vueApp/easyMySQLCloud/body/data.vue',
-            'bodyTokens'   : '/vueApp/easyMySQLCloud/body/tokens.vue'
+            'bodyData'   : '/vueApp/easyMySQLCloud/body/data.vue'
+            
         }, 
         TPL :{
             'appHeader' : '/vueApp/easyMySQLCloud/appHeader.vue',
