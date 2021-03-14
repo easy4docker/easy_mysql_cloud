@@ -63,9 +63,9 @@ module.exports = {
             const me = this;
             me.root.dataEngine().appPost({
                 cmd : 'token',
-                code : 'getTokes'
+                code : 'getTokens'
             }, (result)=> {
-                me.tokens = (!result || !result.tokens) ? [] : result.result;
+                me.tokens = (!result || !result.result) ? [] : result.result;
             }, true);
         },
         generateToken() {

@@ -7,7 +7,13 @@ const { createPublicKey } = require('crypto');
 			MYSQL = require(env.root + '/vendor/mysql/node_modules/mysql');
 
 		me.call = (postData, callback) => {
-			callback(postData);
+			if (!postData.code || typeof this[postData.code] !== 'function') {
+				callback(postData.code)
+			 } else {
+				me[postData.code](callback);
+				
+			}
+			
 			/*
 			pkg.readJson(env.appEnv + '/key.json', (keyRec) => {
 				const cfg = {
@@ -26,7 +32,11 @@ const { createPublicKey } = require('crypto');
 				
 			});*/
 		};
+		me.getTokens = (cbk) => {
+			cbk(['test1', 'test2'])
+		}
 	};
+
 	if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
 		module.exports = obj;
 	} 
