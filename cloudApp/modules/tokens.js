@@ -22,6 +22,14 @@ const { createPublicKey } = require('crypto');
             }
             return pkg.md5(result);
          }
+
+		 me.getToken = (postData, cbk) => {
+			pkg.readJson(env.appEnv + '/userKey.json', (keyRecs) => {
+				const rec = keyRecs[postData.key];
+				rec.token = postData.key;
+				cbk(rec);
+			});
+		}
 		me.getTokens = (postData, cbk) => {
 			pkg.readJson(env.appEnv + '/userKey.json', (keyRecs) => {
 				cbk(keyRecs);

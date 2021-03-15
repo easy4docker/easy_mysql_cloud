@@ -29,7 +29,25 @@
                                 <button type="button" class="btn btn-primary m-2 ml-1" v-on:click="generateToken()">Request a token</button>
                             </div>
                         </div>
-                        <div v-if="module !== 'addToken'">Token Details</div>
+                        <div v-if="module === 'showInfo'">
+                            <div class="card m-2 p-2 alert-info border-info">
+                                <div class="container-fluid m-0">
+                                    <div class="row">
+                                        <div class="col-10">
+                                            Token : {{currentToken.token}}<br/>
+                                            Owner : {{currentToken.owner}}<br/>
+                                            created : {{showDate(currentToken.tm)}}
+                                        </div>
+                                        <div class="col-2 text-right">
+                                            <button class="btn btn-secondary" v-on:click="removeToken(currentToken.token)">
+                                                <i class="fa fa-trash" aria-hidden="true"></i> Delete
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -47,7 +65,7 @@ module.exports = {
             },
             tokens : [],
 
-            currentToken : '',
+            currentToken : {},
             module : ''
         }
     },
@@ -83,10 +101,11 @@ module.exports = {
             const me = this;
             me.root.dataEngine().appPost({
                 cmd : 'token',
-                code : 'getTokens',
+                code : 'getToken',
                 key : token
             }, (result)=> {
-                console.log(result);
+                me.currentToken = result.result;
+                me.module = 'showInfo';
             }, true);
         },
         generateToken() {
@@ -107,6 +126,8 @@ module.exports = {
                 code : 'removeToken',
                 key : token
             }, (result)=> {
+                me.module = '';
+                me.currentToken = {};
                 me.tokens = (!result || !result.result) ? [] : result.result;
             }, true);
         }
