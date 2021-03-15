@@ -24,16 +24,16 @@ const { createPublicKey } = require('crypto');
          }
 		me.getTokens = (postData, cbk) => {
 			pkg.readJson(env.appEnv + '/userKey.json', (keyRecs) => {
-				cbk(Object.keys(keyRecs));
+				cbk(keyRecs);
 			});
 		}
 
 		me.generateToken = (postData, cbk) => {
 			pkg.readJson(env.appEnv + '/userKey.json', (keyRecs) => {
 				const key = me.makeid(32);
-				keyRecs[key] = new Date().getTime();
+				keyRecs[key] = {owner:postData.owner, tm : new Date().getTime()};
 				fs.writeFile(env.appEnv + '/userKey.json', JSON.stringify(keyRecs), ()=> {
-					cbk(Object.keys(keyRecs));
+					cbk(keyRecs);
 				});
 			})
 		}
@@ -41,7 +41,7 @@ const { createPublicKey } = require('crypto');
 			pkg.readJson(env.appEnv + '/userKey.json', (keyRecs) => {
 				delete keyRecs[postData.key];
 				fs.writeFile(env.appEnv + '/userKey.json', JSON.stringify(keyRecs), ()=> {
-					cbk(Object.keys(keyRecs));
+					cbk(keyRecs);
 				});
 			})
 		}

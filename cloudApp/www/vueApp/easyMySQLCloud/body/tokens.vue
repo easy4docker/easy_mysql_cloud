@@ -10,12 +10,13 @@
                                 <a href="JavaScript:void(0)" v-on:click="addToken()">Add a token</a>
                             </div>
                         </div>
-                        <div v-for="o in tokens "
-                            class="m-1 p-1 text-left">
-                            <a href="JavaScript:void(0)" v-on:click="removeToken(o)">
-                                <i class="fa fa-trash" aria-hidden="true"></i>
-                            </a>
-                            {{o}}
+                        <div v-for="(v, k) in tokens" class="record-item-box m-1 p-1 text-left">
+                            <a href="JavaScript:void(0)" v-on:click="getToken(k)">
+                                {{k}}
+                            </a><br/>
+                            <div class="text-right">
+                                created:<span class="text-info">{{showDate(v.tm)}}</span>
+                                owner: <span class="text-info">{{v.owner}}</span></div>
                         </div>
                     </div>
                     <div class="card tokens-body-section alert-secondary col-8 p-2 m-0 text-left">
@@ -51,23 +52,41 @@ module.exports = {
         }
     },
     mounted() {
-        this.getTokes();
+        this.getTokens();
     },
     watch : {
 
     },
     methods :{
+        showDate(tm) {
+            const d = new Date(tm);
+            return  ("00" + (d.getMonth() + 1)).slice(-2) + "-" +
+            ("00" + d.getDate()).slice(-2) + " " +
+            d.getFullYear() + " " +
+            ("00" + d.getHours()).slice(-2) + ":" +
+            ("00" + d.getMinutes()).slice(-2)
+        },
         addToken() {
             const me = this;
             me.module = 'addToken';
         },
-        getTokes() {
+        getTokens() {
             const me = this;
             me.root.dataEngine().appPost({
                 cmd : 'token',
                 code : 'getTokens'
             }, (result)=> {
                 me.tokens = (!result || !result.result) ? [] : result.result;
+            }, true);
+        },
+        getToken(token) {
+            const me = this;
+            me.root.dataEngine().appPost({
+                cmd : 'token',
+                code : 'getTokens',
+                key : token
+            }, (result)=> {
+                console.log(result);
             }, true);
         },
         generateToken() {
@@ -98,5 +117,8 @@ module.exports = {
 <style>
 .tokens-body-section {
     min-height : 38rem; 
+}
+.record-item-box {
+    border-bottom: 1px dashed #ccc
 }
 </style>
