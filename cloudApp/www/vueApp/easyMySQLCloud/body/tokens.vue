@@ -11,11 +11,11 @@
                             </div>
                         </div>
                         <div v-for="o in tokens "
-                            class="border border-secondary rounded m-1 p-1 text-left">
-                            {{o}}
+                            class="m-1 p-1 text-left">
                             <a href="JavaScript:void(0)" v-on:click="removeToken(o)">
-                                <i class="fa fa-trash pull-right" aria-hidden="true"></i>
+                                <i class="fa fa-trash" aria-hidden="true"></i>
                             </a>
+                            {{o}}
                         </div>
                     </div>
                     <div class="card tokens-body-section alert-secondary col-8 p-2 m-0 text-left">
@@ -74,8 +74,10 @@ module.exports = {
             const me = this;
             me.root.dataEngine().appPost({
                 cmd : 'token',
-                code : 'generateToken'
+                code : 'generateToken',
+                owner : me.form.owner
             }, (result)=> {
+                me.module = '';
                 me.tokens = (!result || !result.result) ? [] : result.result;
             }, true);
         },
