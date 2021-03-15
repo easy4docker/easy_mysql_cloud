@@ -41,7 +41,7 @@ const { createPublicKey } = require('crypto');
 				const key = me.makeid(32);
 				keyRecs[key] = {owner:postData.owner, tm : new Date().getTime()};
 				fs.writeFile(env.appEnv + '/userKey.json', JSON.stringify(keyRecs), ()=> {
-					cbk(keyRecs);
+					cbk(key);
 				});
 			})
 		}

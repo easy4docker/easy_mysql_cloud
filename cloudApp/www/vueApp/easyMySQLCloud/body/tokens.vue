@@ -123,7 +123,9 @@ module.exports = {
                 owner : me.form.owner
             }, (result)=> {
                 me.initData();
-                me.tokens = (!result || !result.result) ? [] : result.result;
+                me.getToken(result.result);
+                me. getTokens();
+                // me.tokens = (!result || !result.result) ? [] : result.result;
             }, true);
         },
         removeToken(token) {
