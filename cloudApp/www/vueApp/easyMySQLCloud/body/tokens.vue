@@ -4,10 +4,18 @@
             <div class="container-fluid m-0">
                 <div class="row">
                     <div class="col-4 p-1 m-0 ">
-                        <div class="pl-2 m-0 text-left"><h5>Tokens:</h5></div>
-                        <div class="current-db border border-success rounded m-1 p-1 text-left alert-success">
-                            <div class="p-1">
-                                <a href="JavaScript:void(0)" v-on:click="addToken()">Add a token</a>
+                        <div class="card border pl-0 m-0 text-left">
+                            <div class="container-fluid m-0">
+                                <div class="row">
+                                    <div class="col-6 text-left p-2 pl-0">
+                                        <h5>Tokens:</h5>
+                                    </div>
+                                    <div class="col-6 text-right">
+                                        <button class="btn btn-sm btn-warning m-2" v-on:click="addToken()">
+                                            Add a token
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div v-for="(v, k) in tokens" class="record-item-box m-1 p-1 text-left">
