@@ -25,7 +25,7 @@
                                 <input type="text" class="form-control" v-model="form.owner" 
                                     placeholder="Email or phone">                        
 
-                                <button type="button" class="btn btn-primary m-2 ml-1" v-on:click="generateToken()">Request a Token</button>
+                                <button type="button" class="btn btn-primary m-2 ml-1" v-on:click="generateToken()">Request a token</button>
                             </div>
                         </div>
                         <div v-if="module !== 'addToken'">Token Details</div>
