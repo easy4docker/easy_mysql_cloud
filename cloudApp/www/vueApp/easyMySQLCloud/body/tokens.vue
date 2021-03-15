@@ -54,7 +54,53 @@
                                         </div>
                                     </div>
                                 </div>
+                            </div>
 
+                            <div class="p-2"><h5>JQuery:</h5></div>
+                            <div class="card m-2 p-2 border-secondary">
+                            
+                            <pre>
+$.ajax({
+    type: "POST",
+    url: "/",
+    data: {
+        "query": "SHOW DATABASES",
+        "token":  "{{currentToken.token}}"               
+    },
+    success: success,
+    dataType: dataType
+});
+                            </pre>
+                            </div>
+
+                            <div class="p-2"><h5>Node.js:</h5></div>
+                            <div class="card m-2 p-2 border-secondary">
+                            
+                            <pre>
+var request = require('request');
+
+request.post(
+    "/",
+    {
+        "query": "SHOW DATABASES",
+        "token":  "{{currentToken.token}}"               
+    },
+    function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+            console.log(body);
+        }
+    }
+);
+                            </pre>
+                            </div>
+                            <div class="p-2"><h5>HTML:</h5></div>
+                            <div class="card m-2 p-2 border-secondary">
+                                <textarea id="w3review" name="w3review" rows="6" cols="50"><form method="post" action="<?php echo $_SERVER['PHP_SELF'];?>">
+                                        SQL: <input type="text" name="sql">
+                                        TOKEN: <input type="text" value="{{currentToken.token}}" name="token">
+                                        <input type="submit">
+                                    </form>
+                                </textarea>
                             </div>
                         </div>
                     </div>
