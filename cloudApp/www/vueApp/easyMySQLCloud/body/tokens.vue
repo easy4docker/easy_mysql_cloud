@@ -29,12 +29,13 @@
                     </div>
                     <div class="card tokens-body-section alert-secondary col-8 p-2 m-0 text-left">
                         <div v-if="module === 'addToken'">
-                            <div class="form-group">
+                            <div class="card m-2 p-2 form-group">
                                 <label class="p-2">Input Token Owner's Email or Phone</label>
                                 <input type="text" class="form-control" v-model="form.owner" 
                                     placeholder="Email or phone">                        
-
-                                <button type="button" class="btn btn-primary m-2 ml-1" v-on:click="generateToken()">Request a token</button>
+                                <span>
+                                <button type="button" class="btn btn-primary mt-2 mb-2" v-on:click="generateToken()">Request a token</button>
+                                </span>
                             </div>
                         </div>
                         <div v-if="module === 'showInfo'">
