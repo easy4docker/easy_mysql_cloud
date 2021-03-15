@@ -76,6 +76,13 @@ module.exports = {
 
     },
     methods :{
+        initData() {
+            this.form = {
+                owner: ''
+            };
+            this.currentToken = {};
+            this.module = '';
+        },
         showDate(tm) {
             const d = new Date(tm);
             return  ("00" + (d.getMonth() + 1)).slice(-2) + "-" +
@@ -115,7 +122,7 @@ module.exports = {
                 code : 'generateToken',
                 owner : me.form.owner
             }, (result)=> {
-                me.module = '';
+                me.initData();
                 me.tokens = (!result || !result.result) ? [] : result.result;
             }, true);
         },
@@ -126,8 +133,7 @@ module.exports = {
                 code : 'removeToken',
                 key : token
             }, (result)=> {
-                me.module = '';
-                me.currentToken = {};
+                me.initData();
                 me.tokens = (!result || !result.result) ? [] : result.result;
             }, true);
         }
