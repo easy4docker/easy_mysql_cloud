@@ -7,12 +7,12 @@
                         <div class="card border pl-0 m-0 text-left">
                             <div class="container-fluid m-0">
                                 <div class="row">
-                                    <div class="col-6 text-left p-2 pl-0">
-                                        <h5>Tokens:</h5>
+                                    <div class="col-8 text-left p-2 pl-0">
+                                        <h5>Tokens List</h5>
                                     </div>
-                                    <div class="col-6 text-right">
+                                    <div class="col-4 text-right">
                                         <button class="btn btn-sm btn-warning m-2" v-on:click="addToken()">
-                                            Add a token
+                                            Add new
                                         </button>
                                     </div>
                                 </div>
@@ -23,8 +23,8 @@
                                 {{k}}
                             </a><br/>
                             <div class="text-right">
-                                created:<span class="text-info">{{showDate(v.tm)}}</span>
-                                owner: <span class="text-info">{{v.owner}}</span></div>
+                                Created:<span class="text-info">{{showDate(v.tm)}}</span>
+                                Owner: <span class="text-info">{{v.owner}}</span></div>
                         </div>
                     </div>
                     <div class="card tokens-body-section alert-secondary col-8 p-2 m-0 text-left">
