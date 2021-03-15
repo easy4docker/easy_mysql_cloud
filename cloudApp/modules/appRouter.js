@@ -77,7 +77,11 @@
 					auth.api((sts) => {
 						if (sts) {
 							tokens.call(req.body,(result)=> {
-								res.send({status: 'success', result :result});
+								if (result.status === 'failure') {
+									res.send(result);
+								} else {
+									res.send({status: 'success', result :result});
+								}
 							});
 							
 						} else {

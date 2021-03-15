@@ -3,19 +3,22 @@
         <div class="card-body m-0 p-1">
             <div class="container-fluid m-0">
                 <div class="row">
-                    <div class="col-3 p-1 m-0 ">
+                    <div class="col-4 p-1 m-0 ">
                         <div class="pl-2 m-0 text-left"><h5>Tokens:</h5></div>
                         <div class="current-db border border-success rounded m-1 p-1 text-left alert-success">
                             <div class="p-1">
-                                <a href="JavaScript:void(0)" v-on:click="addToken()">Add Token</a>
+                                <a href="JavaScript:void(0)" v-on:click="addToken()">Add a token</a>
                             </div>
                         </div>
                         <div v-for="o in tokens "
                             class="border border-secondary rounded m-1 p-1 text-left">
                             {{o}}
+                            <a href="JavaScript:void(0)" v-on:click="removeToken(o)">
+                                <i class="fa fa-trash pull-right" aria-hidden="true"></i>
+                            </a>
                         </div>
                     </div>
-                    <div class="card tokens-body-section alert-secondary col-9 p-2 m-0 text-left">
+                    <div class="card tokens-body-section alert-secondary col-8 p-2 m-0 text-left">
                         <div v-if="module === 'addToken'">
                             <div class="form-group">
                                 <label class="p-2">Input Token Owner's Email or Phone</label>
@@ -41,7 +44,7 @@ module.exports = {
             form : {
                 owner: ''
             },
-            tokens : ['test1', 'test2', 'test3'],
+            tokens : [],
 
             currentToken : '',
             module : ''
@@ -57,7 +60,6 @@ module.exports = {
         addToken() {
             const me = this;
             me.module = 'addToken';
-            me.tokens.push('new-' + new Date().getTime());
         },
         getTokes() {
             const me = this;
@@ -74,7 +76,17 @@ module.exports = {
                 cmd : 'token',
                 code : 'generateToken'
             }, (result)=> {
-                console.log(result);
+                me.tokens = (!result || !result.result) ? [] : result.result;
+            }, true);
+        },
+        removeToken(token) {
+            const me = this;
+            me.root.dataEngine().appPost({
+                cmd : 'token',
+                code : 'removeToken',
+                key : token
+            }, (result)=> {
+                me.tokens = (!result || !result.result) ? [] : result.result;
             }, true);
         }
     }

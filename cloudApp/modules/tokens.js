@@ -8,32 +8,42 @@ const { createPublicKey } = require('crypto');
 
 		me.call = (postData, callback) => {
 			if (!postData.code || typeof this[postData.code] !== 'function') {
-				callback(postData.code)
-			 } else {
-				me[postData.code](callback);
-				
+				callback({status: 'failure', message: 'missing method of ' + postData.code})
+				} else {
+				me[postData.code](postData, callback);
 			}
-			
-			/*
-			pkg.readJson(env.appEnv + '/key.json', (keyRec) => {
-				const cfg = {
-					host: 'localhost',
-					port : '3306',
-					user: 'root',
-					password: keyRec.key,
-					multipleStatements: true
-				};
-				const connection = MYSQL.createConnection(cfg);
-				connection.query(sql, (error, results, fields) => {
-					connection.end();
-					callback((error) ? { status : 'failure', message : error.message} : 
-						{ status : 'success', result : results});
-				});
-				
-			});*/
 		};
-		me.getTokens = (cbk) => {
-			cbk(['test1', 'test2'])
+		me.makeid = (length) => {
+            var result           = '';
+            var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+            var charactersLength = characters.length;
+            for ( var i = 0; i < length; i++ ) {
+               result += characters.charAt(Math.floor(Math.random() * charactersLength));
+            }
+            return pkg.md5(result);
+         }
+		me.getTokens = (postData, cbk) => {
+			pkg.readJson(env.appEnv + '/userKey.json', (keyRecs) => {
+				cbk(Object.keys(keyRecs));
+			});
+		}
+
+		me.generateToken = (postData, cbk) => {
+			pkg.readJson(env.appEnv + '/userKey.json', (keyRecs) => {
+				const key = me.makeid(32);
+				keyRecs[key] = new Date().getTime();
+				fs.writeFile(env.appEnv + '/userKey.json', JSON.stringify(keyRecs), ()=> {
+					cbk(Object.keys(keyRecs));
+				});
+			})
+		}
+		me.removeToken = (postData, cbk) => {
+			pkg.readJson(env.appEnv + '/userKey.json', (keyRecs) => {
+				delete keyRecs[postData.key];
+				fs.writeFile(env.appEnv + '/userKey.json', JSON.stringify(keyRecs), ()=> {
+					cbk(Object.keys(keyRecs));
+				});
+			})
 		}
 	};
 
