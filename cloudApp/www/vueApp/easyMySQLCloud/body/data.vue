@@ -5,6 +5,13 @@
                 <div class="row">
                     <div class="col-12 p-0 m-0 text-left">
                     Data management
+                                            <!--div class="form-group">
+                            <label>Upload Inuut Data Files</label>
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="customFile">
+                                <label class="custom-file-label" for="customFile">Choose file</label>
+                            </div>
+                        </div-->
                     </div>
                 </div>
             </div>
